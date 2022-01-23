@@ -62,18 +62,39 @@
       <mat-toolbar
         class="sidenav-header flex justify-between lg:hidden sticky dark:bg-custom-purple-900 dark:text-custom-grey-500 py-11"
       >
-        <button mat-icon-button (click)="infoSidenav.toggle()">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <h1 class="py-6">Hossein Mousavi</h1>
+        <h1 class="py-6">Report Management Dashboard</h1>
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
       </mat-toolbar>
 
-      <!--            <router-outlet></router-outlet>-->
-      <div class="h-full overflow-y-auto flex flex-col items-center">
-        <h1>test</h1>
+      <h1
+        class="bg-custom-purple-500 w-full py-5 text-custom-grey-500 text-center hidden lg:block sticky"
+      >
+        Report Management Dashboard (RMD)
+      </h1>
+
+      <!--                  <router-outlet></router-outlet>-->
+      <div class="h-screen py-5 px-5 flex justify-center">
+        <mat-card class="h-full w-full">
+          <mat-card-header>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct
+              spitz breeds of dog from Japan. A small, agile dog that copes very
+              well with mountainous terrain, the Shiba Inu was originally bred
+              for hunting.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
       </div>
     </section>
 
@@ -101,7 +122,11 @@
         <footer
           class="text-custom-yellow-500 w-full flex flex-col justify-center py-6 items-center"
         >
-          <button mat-icon-button (click)="changeTheme()">
+          <button
+            mat-icon-button
+            (click)="changeTheme()"
+            [matTooltip]="isDarkTheme ? 'Dark Theme' : 'Light Theme'"
+          >
             <mat-icon>{{ isDarkTheme ? "dark_mode" : "light_mode" }}</mat-icon>
           </button>
         </footer>
