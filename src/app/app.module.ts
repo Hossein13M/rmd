@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { Interceptor } from './interceptor';
+import { AppService } from './services/app.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,8 +28,12 @@ import { RouterModule } from '@angular/router';
     MatTooltipModule,
     MatCardModule,
     RouterModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AppService,
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
