@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Organization, Report } from '../models/common.model';
+import { Organization, Report, ReportInfo } from '../models/common.model';
 
 @Injectable()
 export class AppService {
@@ -15,5 +15,9 @@ export class AppService {
     return this.http.get<Array<Report>>(
       `/api/report-type?organization=${organizationCode}`
     );
+  }
+
+  public uploadReport(reportData: ReportInfo): Observable<any> {
+    return this.http.post<any>(``, reportData);
   }
 }

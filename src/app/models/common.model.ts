@@ -19,3 +19,12 @@ export interface Report {
   isActive: boolean;
   deletedAt: Date;
 }
+
+export interface ReportInfo {
+  organization: string;
+  reportType: string;
+  reportTypeId: number;
+  type: number;
+  date: string;
+  file: any;
+}
