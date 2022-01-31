@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Interceptor } from './interceptor';
 import { AppService } from './services/app.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { AppService } from './services/app.service';
     MatCardModule,
     RouterModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AppService,
