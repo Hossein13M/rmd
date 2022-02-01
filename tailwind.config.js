@@ -1,4 +1,4 @@
-const { colors: defaultColors } = require("tailwindcss/defaultTheme");
+const { defaultColors } = require("tailwindcss/defaultTheme");
 
 const colors = {
   ...defaultColors,
@@ -21,15 +21,12 @@ const colors = {
 module.exports = {
   prefix: "",
   important: true,
-  purge: {
-    enable: true,
-    content: ["./src/**/*.{html,ts}"],
-    preserveHtmlElements: false,
-  },
+  content: ["./src/**/*.{html,ts}"],
   darkMode: "class",
   theme: {
-    colors: colors,
-    extend: {},
+    extend: {
+      colors: colors,
+    },
     screen: {
       xs: { min: "320px", max: "640px" },
       sm: { min: "640px", max: "767px" },
