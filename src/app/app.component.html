@@ -58,7 +58,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="flex">
-    <section class="flex flex-col flex-1 justify-between bg-red-500">
+    <section class="flex flex-col flex-1 justify-between">
       <mat-toolbar
         class="sidenav-header flex justify-between lg:hidden sticky dark:bg-custom-purple-900 dark:text-custom-grey-500 py-11"
       >
@@ -77,14 +77,13 @@
       <!--                  <router-outlet></router-outlet>-->
       <div class="h-screen py-5 px-5 flex justify-center">
         <mat-card class="h-full w-full">
-          <mat-card-header class="text-center justify-center">
-            <mat-card-title>
-              <h1>{{ matCardHeader }}</h1>
+          <mat-card-header class="text-center justify-center bg-yellow-500">
+            <mat-card-title class="text-4xl">
+              {{ matCardHeader }}
             </mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
           </mat-card-header>
 
-          <mat-card-content>
+          <mat-card-content dir="rtl">
             <router-outlet></router-outlet>
           </mat-card-content>
           <mat-card-actions>
