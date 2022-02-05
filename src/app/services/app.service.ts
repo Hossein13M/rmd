@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Organization, Report, ReportInfo } from '../models/common.model';
+import { Organization, Report } from '../models/common.model';
 
 @Injectable()
 export class AppService {
@@ -17,7 +17,7 @@ export class AppService {
     );
   }
 
-  public uploadReport(reportData: ReportInfo): Observable<any> {
+  public uploadReport(reportData: any): Observable<any> {
     return this.http.post<any>(``, reportData);
   }
 }
