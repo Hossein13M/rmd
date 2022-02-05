@@ -14,7 +14,9 @@ import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Interceptor } from './interceptor';
 import { AppService } from './services/app.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileUploadModule } from './modules/file-upload/file-upload.module';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,11 +32,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     RouterModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
+    FileUploadModule,
+    MatNativeDateModule,
   ],
   providers: [
     AppService,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'fa-IR' },
   ],
   bootstrap: [AppComponent],
 })
