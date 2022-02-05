@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../services/app.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Organization, Report, ReportInfo } from '../../models/common.model';
+import { AppService } from '../../services/app.service';
+import { Organization, Report } from '../../models/common.model';
+import { Utils } from '../../utils';
 
 @Component({
   selector: 'app-file-upload',
@@ -15,8 +16,8 @@ export class FileUploadComponent implements OnInit {
     organization: [null, [Validators.required]],
     reportType: [null, [Validators.required]],
     reportTypeId: [null, [Validators.required]],
-    type: [1, [Validators.required]],
-    date: [Date.now(), [Validators.required]],
+    type: [null, [Validators.required]],
+    date: [new Date(Date.now()), [Validators.required]],
     file: [null, [Validators.required]],
   });
 
@@ -44,10 +45,35 @@ export class FileUploadComponent implements OnInit {
       .subscribe((response) => (this.reportType = response));
   }
 
+  private findReportTypeName(reportTypeId: number): string {
+    return this.reportType.find((reportType) => reportType.id === reportTypeId)!
+      .name;
+  }
+
   public uploadFile(): void {
-    const reportInfo = this.form.value as ReportInfo;
+    this.form
+      .get('reportType')
+      ?.setValue(this.findReportTypeName(this.form.value.reportTypeId));
+
+    const reportInfo = this.form.value;
+
+    reportInfo.date = Utils.convertDateToGregorianFormatForServer(
+      reportInfo.date
+    );
+
+    const formData: FormData = new FormData();
+    Object.keys(reportInfo).map((key) => formData.append(key, reportInfo[key]));
+
     this.appService
-      .uploadReport(reportInfo)
+      .uploadReport(formData)
       .subscribe(() => console.log('success'));
+  }
+
+  public triggerFileSelect(): void {
+    document.getElementById('uploadFile')?.click();
+  }
+
+  public uploadFiles(event: any) {
+    this.form.get('file')!.setValue(event.files[0]);
   }
 }
