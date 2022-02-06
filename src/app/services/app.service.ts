@@ -20,4 +20,12 @@ export class AppService {
   public uploadReport(reportData: any): Observable<any> {
     return this.http.post<any>(`/api/upload-report`, reportData);
   }
+
+  public getAvailableDatesForReports(
+    organizationNationalCode: number
+  ): Observable<Array<string>> {
+    return this.http.get<Array<string>>(
+      `/api/organization/report-dates?organization=${organizationNationalCode}`
+    );
+  }
 }

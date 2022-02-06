@@ -17,6 +17,7 @@ import { AppService } from './services/app.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from './modules/file-upload/file-upload.module';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
     FormsModule,
     ReactiveFormsModule,
     FileUploadModule,
+    DashboardModule,
     MatNativeDateModule,
   ],
   providers: [

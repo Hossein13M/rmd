@@ -12,6 +12,7 @@ import { Utils } from '../../utils';
 export class FileUploadComponent implements OnInit {
   public organizations: Array<Organization> = [];
   public reportType: Array<Report> = [];
+  public availableDatesForReportsPerOrganization: Array<string> = [];
   public form: FormGroup = this.fb.group({
     organization: [null, [Validators.required]],
     reportType: [null, [Validators.required]],
@@ -28,9 +29,10 @@ export class FileUploadComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrganizationList();
-    this.form
-      .get('organization')
-      ?.valueChanges.subscribe((value) => this.getReportTypes(value));
+    this.form.get('organization')?.valueChanges.subscribe((value) => {
+      this.getReportTypes(value);
+      this.getAvailableDatesForReportsPerOrganization(value);
+    });
   }
 
   private getOrganizationList(): void {
@@ -76,4 +78,20 @@ export class FileUploadComponent implements OnInit {
   public uploadFiles(event: any) {
     this.form.get('file')!.setValue(event.files[0]);
   }
+
+  private getAvailableDatesForReportsPerOrganization(
+    organizationNationalCode: number
+  ): void {
+    this.appService
+      .getAvailableDatesForReports(organizationNationalCode)
+      .subscribe(
+        (response) => (this.availableDatesForReportsPerOrganization = response)
+      );
+  }
+
+  public myFilter = (d: Date | null): boolean => {
+    return this.availableDatesForReportsPerOrganization.includes(
+      Utils.convertDateToGregorianFormatForServer(d!)
+    );
+  };
 }
