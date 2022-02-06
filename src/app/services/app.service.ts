@@ -18,6 +18,6 @@ export class AppService {
   }
 
   public uploadReport(reportData: any): Observable<any> {
-    return this.http.post<any>(``, reportData);
+    return this.http.post<any>(`/api/upload-report`, reportData);
   }
 }
