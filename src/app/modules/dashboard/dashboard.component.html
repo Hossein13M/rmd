@@ -1,1 +1,24 @@
-<p>dashboard works!</p>
+<div>
+    <form class="flex justify-around w-full mt-5 text-center items-center columns-3" (submit)="getLiquidityReportChart()" [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>نهاد</mat-label>
+            <mat-select formControlName="organization" required>
+                <mat-option *ngFor="let organization of organizations" [value]="organization.nationalCode">
+                    {{ organization.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>تاریخی را برگزینید</mat-label>
+            <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [formControlName]="'createdAt'" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" matTooltip="دریافت داده‌ها" type="submit">
+            <mat-icon fontSet="material-icons-outlined"> get_app </mat-icon>
+            دریافت داده‌ها
+        </button>
+    </form>
+</div>

@@ -1,93 +1,55 @@
 <div>
-  <form
-    class="flex justify-around w-full mt-5 text-center items-center columns-3"
-    (submit)="uploadFile()"
-    [formGroup]="form"
-  >
-    <mat-form-field appearance="outline">
-      <mat-label>نوع</mat-label>
-      <mat-select formControlName="type" required>
-        <mat-option [value]="1"> داشبورد </mat-option>
-        <mat-option [value]="2"> جزییات </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <form class="flex justify-around w-full mt-5 text-center items-center columns-3" (submit)="uploadFile()" [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>نوع</mat-label>
+            <mat-select formControlName="type" required>
+                <mat-option [value]="1"> داشبورد </mat-option>
+                <mat-option [value]="2"> جزییات </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>نهاد</mat-label>
-      <mat-select formControlName="organization" required>
-        <mat-option
-          *ngFor="let organization of organizations"
-          [value]="organization.nationalCode"
+        <mat-form-field appearance="outline">
+            <mat-label>نهاد</mat-label>
+            <mat-select formControlName="organization" required>
+                <mat-option *ngFor="let organization of organizations" [value]="organization.nationalCode">
+                    {{ organization.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>نوع گزارش</mat-label>
+            <mat-select formControlName="reportTypeId" required>
+                <mat-option *ngFor="let reportType of reportType" [value]="reportType.id">
+                    {{ reportType.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>تاریخ</mat-label>
+            <input matInput [matDatepicker]="dp3" [disabled]="true" [formControlName]="'date'" />
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <input (change)="uploadFiles($event.target)" accept="image/*,.xlsx" dir="rtl" id="uploadFile" name="uploadedFile" type="file" style="display: none" />
+        <button
+            (click)="triggerFileSelect()"
+            [disableRipple]="true"
+            mat-flat-button
+            color="accent"
+            matTooltip="گزینش فایل"
+            matTooltipPosition="below"
+            type="button"
         >
-          {{ organization.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+            <mat-icon fontSet="material-icons-outlined">upload </mat-icon>
+            گزینش فایل
+        </button>
 
-    <mat-form-field appearance="outline">
-      <mat-label>نوع گزارش</mat-label>
-      <mat-select formControlName="reportTypeId" required>
-        <mat-option
-          *ngFor="let reportType of reportType"
-          [value]="reportType.id"
-        >
-          {{ reportType.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>تاریخ</mat-label>
-      <input
-        matInput
-        [matDatepicker]="dp3"
-        [disabled]="true"
-        [formControlName]="'date'"
-      />
-      <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-      <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-    </mat-form-field>
-
-    <input
-      (change)="uploadFiles($event.target)"
-      accept="image/*,.xlsx"
-      dir="rtl"
-      id="uploadFile"
-      name="uploadedFile"
-      type="file"
-      style="display: none"
-    />
-    <button
-      (click)="triggerFileSelect()"
-      [disableRipple]="true"
-      mat-flat-button
-      color="accent"
-      matTooltip="گزینش فایل"
-      matTooltipPosition="below"
-      type="button"
-    >
-      <mat-icon fontSet="material-icons-outlined">upload </mat-icon>
-      گزینش فایل
-    </button>
-
-    <button
-      mat-flat-button
-      color="primary"
-      matTooltip="گزینش فایل"
-      type="submit"
-    >
-      <mat-icon fontSet="material-icons-outlined">publish </mat-icon>
-      بارگزاری گزارش
-    </button>
-  </form>
-
-
-
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
+        <button mat-flat-button color="primary" matTooltip="گزینش فایل" type="submit">
+            <mat-icon fontSet="material-icons-outlined">publish </mat-icon>
+            بارگزاری گزارش
+        </button>
+    </form>
 </div>

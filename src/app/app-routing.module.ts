@@ -4,13 +4,13 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { FileUploadComponent } from './modules/file-upload/file-upload.component';
 
 const routes: Routes = [
-  { component: DashboardComponent, path: 'dashboard' },
-  { component: FileUploadComponent, path: 'upload-file' },
-  { path: '', pathMatch: 'full', redirectTo: 'upload-file' },
+    { component: DashboardComponent, path: 'dashboard' },
+    { component: FileUploadComponent, path: 'upload-file' },
+    { path: '', pathMatch: 'full', redirectTo: 'upload-file' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
 })
 export class AppRoutingModule {}

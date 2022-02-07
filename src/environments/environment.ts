@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  rmdAPI: 'http://172.22.255.239:3000',
+    production: false,
+    rmdAPI: 'http://172.22.255.239:3000',
 };
 
 /*
