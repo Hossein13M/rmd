@@ -11,7 +11,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>تاریخی را برگزینید</mat-label>
-            <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [formControlName]="'createdAt'" />
+            <input matInput [matDatepickerFilter]="filterDatesBaseOnReportAvailability" [matDatepicker]="picker" [formControlName]="'createdAt'" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>

@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
             .subscribe((response) => (this.availableDatesForReportsPerOrganization = response));
     }
 
-    public myFilter = (d: Date | null): boolean => {
+    public filterDatesBaseOnReportAvailability = (d: Date | null): boolean => {
         return this.availableDatesForReportsPerOrganization.includes(Utils.convertDateToGregorianFormatForServer(d!));
     };
 }
