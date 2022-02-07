@@ -1,5 +1,5 @@
 <div>
-    <form class="flex justify-around w-full mt-5 text-center items-center columns-3" (submit)="getLiquidityReportChart()" [formGroup]="form">
+    <form class="flex justify-around w-full mt-5 text-center items-center columns-3" (submit)="prepareDataForLiquidityReports()" [formGroup]="form">
         <mat-form-field appearance="outline">
             <mat-label>نهاد</mat-label>
             <mat-select formControlName="organization" required>

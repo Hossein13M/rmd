@@ -40,3 +40,22 @@ export interface LiquidityReportChart {
     G5: string;
     G6: string;
 }
+
+export interface LiquidityReportDescriptions {
+    id: number;
+    createdAt: Date;
+    date: string;
+    desc1: string;
+    desc2: string;
+    desc3: string;
+    desc4: string;
+    desc5: string;
+    desc6: string;
+    desc7: string;
+    desc8: string;
+}
+
+export interface LiquidityReportForGettingData {
+    organization: string;
+    createdAt: string;
+}

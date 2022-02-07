@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
-import { LiquidityReportChart, Organization } from '../../models/common.model';
+import { LiquidityReportChart, LiquidityReportDescriptions, LiquidityReportForGettingData, Organization } from '../../models/common.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Utils } from '../../utils';
 
@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
     public organizations: Array<Organization> = [];
     public availableDatesForReportsPerOrganization: Array<string> = [];
     public liquidityReportChartInfo: Array<LiquidityReportChart> = [];
+    public liquidityReportDescriptionsInfo: Array<LiquidityReportDescriptions> = [];
     public form: FormGroup = this.fb.group({
         organization: [null, [Validators.required]],
         createdAt: [null, [Validators.required]],
@@ -29,14 +30,26 @@ export class DashboardComponent implements OnInit {
         this.appService.getOrganization().subscribe((response) => (this.organizations = response));
     }
 
-    public getLiquidityReportChart(): void {
-        const reportNecessaryInfo: { organization: string; createdAt: string } = {
+    public prepareDataForLiquidityReports(): void {
+        const reportNecessaryInfo: LiquidityReportForGettingData = {
             organization: this.form.get('organization')!.value,
             createdAt: Utils.convertDateToGregorianFormatForServer(this.form.get('createdAt')!.value),
-        } as { organization: string; createdAt: string };
+        };
+
+        this.getLiquidityReportDescription(reportNecessaryInfo);
+        this.getLiquidityReportChart(reportNecessaryInfo);
+    }
+
+    private getLiquidityReportChart(reportNecessaryInfo: LiquidityReportForGettingData): void {
         this.appService
             .getLiquidityReportChart(reportNecessaryInfo.organization, reportNecessaryInfo.createdAt)
             .subscribe((response) => (this.liquidityReportChartInfo = response));
+    }
+
+    private getLiquidityReportDescription(reportNecessaryInfo: LiquidityReportForGettingData): void {
+        this.appService
+            .getLiquidityReportDescriptions(reportNecessaryInfo.organization, reportNecessaryInfo.createdAt)
+            .subscribe((response) => (this.liquidityReportDescriptionsInfo = response));
     }
 
     private getAvailableDatesForReportsPerOrganization(organizationNationalCode: number): void {
