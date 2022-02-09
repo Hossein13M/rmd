@@ -13,7 +13,9 @@ export class DashboardComponent implements OnInit {
     public organizations: Array<Organization> = [];
     public availableDatesForReportsPerOrganization: Array<string> = [];
     public liquidityReportChartInfo: Array<LiquidityReportChart> = [];
+    public isChartShown: boolean = false;
     public liquidityReportDescriptionsInfo: Array<LiquidityReportDescriptions> = [];
+
     public form: FormGroup = this.fb.group({
         organization: [null, [Validators.required]],
         createdAt: [null, [Validators.required]],
@@ -41,9 +43,10 @@ export class DashboardComponent implements OnInit {
     }
 
     private getLiquidityReportChart(reportNecessaryInfo: LiquidityReportForGettingData): void {
-        this.appService
-            .getLiquidityReportChart(reportNecessaryInfo.organization, reportNecessaryInfo.createdAt)
-            .subscribe((response) => (this.liquidityReportChartInfo = response));
+        this.appService.getLiquidityReportChart(reportNecessaryInfo.organization, reportNecessaryInfo.createdAt).subscribe((response) => {
+            this.liquidityReportChartInfo = response;
+            this.isChartShown = true;
+        });
     }
 
     private getLiquidityReportDescription(reportNecessaryInfo: LiquidityReportForGettingData): void {

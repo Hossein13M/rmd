@@ -9,6 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartModule } from '../../components/chart/chart.module';
 
 @NgModule({
     declarations: [DashboardComponent],
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatTooltipModule,
         MatIconModule,
         MatSelectModule,
+        ChartModule,
     ],
 })
 export class DashboardModule {}

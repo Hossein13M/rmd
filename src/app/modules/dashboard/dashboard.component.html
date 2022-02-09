@@ -21,4 +21,6 @@
             دریافت داده‌ها
         </button>
     </form>
+
+    <app-combo-chart *ngIf="isChartShown" [data]="this.liquidityReportChartInfo"></app-combo-chart>
 </div>
