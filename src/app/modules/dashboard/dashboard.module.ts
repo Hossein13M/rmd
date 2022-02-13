@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from '../../components/chart/chart.module';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
     declarations: [DashboardComponent],
@@ -25,6 +26,7 @@ import { ChartModule } from '../../components/chart/chart.module';
         MatIconModule,
         MatSelectModule,
         ChartModule,
+        DashboardRoutingModule,
     ],
 })
 export class DashboardModule {}

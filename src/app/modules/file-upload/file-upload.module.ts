@@ -9,6 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FileUploadRoutingModule } from './file-upload-routing.module';
 
 @NgModule({
     declarations: [FileUploadComponent],
@@ -23,6 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatDatepickerModule,
         MatButtonModule,
         MatTooltipModule,
+        FileUploadRoutingModule,
     ],
     exports: [FileUploadComponent],
 })
