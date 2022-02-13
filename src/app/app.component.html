@@ -8,11 +8,11 @@
                 <div class="sidenav-header hidden lg:block"></div>
             </header>
 
-            <section class="bg-custom-purple-900 justify-center flex flex-col items-center text-center px-24 h-full sidenav-background">
+            <section class="bg-custom-purple-900 justify-center flex flex-col items-center px-24 h-full sidenav-background" dir="rtl">
                 <nav class="flex flex-col">
-                    <a routerLink="home" (click)="clickHandler()" routerLinkActive="active"><h1>Home</h1></a>
-                    <a routerLink="about" (click)="clickHandler()" routerLinkActive="active"><h1>About</h1> </a>
-                    <a routerLink="contact" (click)="clickHandler()" routerLinkActive="active"><h1>Contact</h1> </a>
+                    <a *ngFor="let item of navigationList" [routerLink]="item.englishTitle" (click)="clickHandler(item)">
+                        <h1>{{ item.persianTitle }}</h1>
+                    </a>
                 </nav>
             </section>
 
@@ -71,7 +71,7 @@
                 </header>
 
                 <section class="bg-custom-purple-900 vertical-text flex items-center pt-20 h-full sidenav-background">
-                    <h1>home</h1>
+                    <h1>{{ matCardHeader }}</h1>
                 </section>
 
                 <footer class="text-custom-yellow-500 w-full flex flex-col justify-center py-6 items-center">
