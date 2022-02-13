@@ -34,12 +34,18 @@ export class ComboChartComponent implements OnInit, OnDestroy, AfterViewInit {
         this.browserOnly(() => {
             am4core.useTheme(am4themes_animated);
             let chart = am4core.create('chartdiv', am4charts.XYChart);
-            chart.paddingRight = 20;
+            chart.paddingRight = 10;
             chart.data = this.data;
+            console.log({ chart });
 
             let categoryAxis: any = chart.xAxes.push(new am4charts.CategoryAxis());
             categoryAxis.dataFields.category = 'date';
+            console.log(categoryAxis);
             categoryAxis.title.text = 'تاریخ';
+            categoryAxis.title.fontWeight = 'bold';
+
+            categoryAxis.renderer.grid.template.location = 0;
+            categoryAxis.renderer.minGridDistance = 200;
 
             let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
             valueAxis.title.text = 'میلیارد تومان';

@@ -15,11 +15,6 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-
-        <button mat-flat-button color="primary" matTooltip="دریافت داده‌ها" type="submit">
-            <mat-icon fontSet="material-icons-outlined"> get_app </mat-icon>
-            دریافت داده‌ها
-        </button>
     </form>
 
     <app-combo-chart *ngIf="isChartShown" [data]="this.liquidityReportChartInfo"></app-combo-chart>

@@ -26,10 +26,14 @@ export class DashboardComponent implements OnInit {
     ngOnInit(): void {
         this.getOrganizationList();
         this.form.get('organization')?.valueChanges.subscribe((value) => this.getAvailableDatesForReportsPerOrganization(value));
+        this.form.get('createdAt')?.valueChanges.subscribe(() => this.prepareDataForLiquidityReports());
     }
 
     private getOrganizationList(): void {
-        this.appService.getOrganization().subscribe((response) => (this.organizations = response));
+        this.appService.getOrganization().subscribe((response) => {
+            this.organizations = response;
+            this.setDefaultValuesForOrganization();
+        });
     }
 
     public prepareDataForLiquidityReports(): void {
@@ -43,6 +47,7 @@ export class DashboardComponent implements OnInit {
     }
 
     private getLiquidityReportChart(reportNecessaryInfo: LiquidityReportForGettingData): void {
+        this.isChartShown = false;
         this.appService.getLiquidityReportChart(reportNecessaryInfo.organization, reportNecessaryInfo.createdAt).subscribe((response) => {
             this.liquidityReportChartInfo = response;
             this.isChartShown = true;
@@ -56,12 +61,23 @@ export class DashboardComponent implements OnInit {
     }
 
     private getAvailableDatesForReportsPerOrganization(organizationNationalCode: number): void {
-        this.appService
-            .getAvailableDatesForReports(organizationNationalCode)
-            .subscribe((response) => (this.availableDatesForReportsPerOrganization = response));
+        this.appService.getAvailableDatesForReports(organizationNationalCode).subscribe((response) => {
+            this.availableDatesForReportsPerOrganization = response;
+            this.setDefaultValueForDate();
+        });
     }
 
     public filterDatesBaseOnReportAvailability = (d: Date | null): boolean => {
         return this.availableDatesForReportsPerOrganization.includes(Utils.convertDateToGregorianFormatForServer(d!));
     };
+
+    private setDefaultValuesForOrganization(): void {
+        const defaultOrganization: Organization = this.organizations.find((organization) => organization.name === 'تامین سرمایه تمدن')!;
+        this.form.get('organization')?.setValue(defaultOrganization.nationalCode);
+    }
+
+    private setDefaultValueForDate(): void {
+        const lastAvailableDate = new Date(this.availableDatesForReportsPerOrganization[this.availableDatesForReportsPerOrganization.length - 1]);
+        this.form.get('createdAt')?.setValue(lastAvailableDate);
+    }
 }
