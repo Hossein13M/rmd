@@ -44,7 +44,7 @@ export interface LiquidityReportChart {
 export interface LiquidityReportDescriptions {
     id: number;
     createdAt: Date;
-    date: string;
+    date?: string;
     desc1: string;
     desc2: string;
     desc3: string;
@@ -53,9 +53,19 @@ export interface LiquidityReportDescriptions {
     desc6: string;
     desc7: string;
     desc8: string;
+    title1: string;
+    title2: string;
+    title3: string;
+    title4: string;
+    title5: string;
+    title6: string;
+    title7: string;
+    title8: string;
 }
 
 export interface LiquidityReportForGettingData {
     organization: string;
     createdAt: string;
 }
+
+export type ComponentDataGetInfo = { organization: string; createdAt: string };

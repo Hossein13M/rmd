@@ -28,8 +28,8 @@ export class AppService {
         return this.http.get<Array<LiquidityReportChart>>(`/api/dashboard/naghdinegi/chart?organization=${organization}&createdAt=${createdAt}`);
     }
 
-    public getLiquidityReportDescriptions(organization: string, createdAt: string): Observable<Array<LiquidityReportDescriptions>> {
+    public getLiquidityReportDescriptions(organization: string, createdAt: string): Observable<LiquidityReportDescriptions> {
         // Liquidity = نقدینگی
-        return this.http.get<Array<LiquidityReportDescriptions>>(`/api/dashboard/naghdinegi/descriptions?organization=${organization}&createdAt=${createdAt}`);
+        return this.http.get<LiquidityReportDescriptions>(`/api/dashboard/naghdinegi/descriptions?organization=${organization}&createdAt=${createdAt}`);
     }
 }

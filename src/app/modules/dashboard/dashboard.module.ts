@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from '../../components/chart/chart.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { LiquidityDescModule } from '../../components/liquidity-desc/liquidity-desc.module';
 
 @NgModule({
     declarations: [DashboardComponent],
@@ -27,6 +28,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
         MatSelectModule,
         ChartModule,
         DashboardRoutingModule,
+        LiquidityDescModule,
     ],
 })
 export class DashboardModule {}

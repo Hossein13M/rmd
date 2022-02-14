@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
-import { LiquidityReportChart, LiquidityReportDescriptions, LiquidityReportForGettingData, Organization } from '../../models/common.model';
+import {
+    ComponentDataGetInfo,
+    LiquidityReportChart,
+    LiquidityReportDescriptions,
+    LiquidityReportForGettingData,
+    Organization,
+} from '../../models/common.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Utils } from '../../utils';
 
@@ -42,7 +48,7 @@ export class DashboardComponent implements OnInit {
             createdAt: Utils.convertDateToGregorianFormatForServer(this.form.get('createdAt')!.value),
         };
 
-        this.getLiquidityReportDescription(reportNecessaryInfo);
+        // this.getLiquidityReportDescription(reportNecessaryInfo);
         this.getLiquidityReportChart(reportNecessaryInfo);
     }
 
@@ -54,11 +60,11 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    private getLiquidityReportDescription(reportNecessaryInfo: LiquidityReportForGettingData): void {
-        this.appService
-            .getLiquidityReportDescriptions(reportNecessaryInfo.organization, reportNecessaryInfo.createdAt)
-            .subscribe((response) => (this.liquidityReportDescriptionsInfo = response));
-    }
+    // private getLiquidityReportDescription(reportNecessaryInfo: LiquidityReportForGettingData): void {
+    //     this.appService
+    //         .getLiquidityReportDescriptions(reportNecessaryInfo.organization, reportNecessaryInfo.createdAt)
+    //         .subscribe((response) => (this.liquidityReportDescriptionsInfo = response));
+    // }
 
     private getAvailableDatesForReportsPerOrganization(organizationNationalCode: number): void {
         this.appService.getAvailableDatesForReports(organizationNationalCode).subscribe((response) => {
@@ -79,5 +85,12 @@ export class DashboardComponent implements OnInit {
     private setDefaultValueForDate(): void {
         const lastAvailableDate = new Date(this.availableDatesForReportsPerOrganization[this.availableDatesForReportsPerOrganization.length - 1]);
         this.form.get('createdAt')?.setValue(lastAvailableDate);
+    }
+
+    public returnValueForComponents(): ComponentDataGetInfo {
+        return {
+            organization: this.form.get('organization')!.value,
+            createdAt: Utils.convertDateToGregorianFormatForServer(this.form.get('createdAt')!.value),
+        };
     }
 }
