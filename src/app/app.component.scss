@@ -19,6 +19,10 @@
     overflow: auto;
 }
 
-.dastan {
+.bg-image {
     background-image: url('../../src/assets/images/bg-image.jpg');
+}
+
+.calc-div-height {
+    height: calc(100% - 96px);
 }
