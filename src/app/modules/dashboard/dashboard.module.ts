@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from '../../components/chart/chart.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { LiquidityDescModule } from '../../components/liquidity-desc/liquidity-desc.module';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
     declarations: [DashboardComponent],
@@ -29,6 +30,7 @@ import { LiquidityDescModule } from '../../components/liquidity-desc/liquidity-d
         ChartModule,
         DashboardRoutingModule,
         LiquidityDescModule,
+        MatDividerModule,
     ],
 })
 export class DashboardModule {}

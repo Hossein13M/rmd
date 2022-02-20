@@ -1,11 +1,10 @@
-<!--<mat-card class="example-card">-->
-<!--    <mat-card-subtitle>توضیحات </mat-card-subtitle>-->
-<!--    <mat-card-content>-->
-<!--        <mat-card *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]">-->
-<!--            <mat-card-subtitle>{{liquidity[`desc${item}`]}} </mat-card-subtitle>-->
-<!--            <mat-card-content> </mat-card-content>-->
-<!--            <mat-divider inset></mat-divider>-->
-<!--        </mat-card>-->
-<!--    </mat-card-content>-->
-<!--    <mat-divider inset></mat-divider>-->
-<!--</mat-card>-->
+<mat-card *ngIf="liquidityDescriptionList.length" class="bg-color">
+    <mat-card-title class="text-center">توضیحات </mat-card-title>
+    <mat-card-content class="flex flex-wrap">
+        <mat-card *ngFor="let liquidityDescription of liquidityDescriptionList" class="flex-1 mx-10">
+            <mat-card-subtitle>{{ liquidityDescription.title }} </mat-card-subtitle>
+            <mat-card-content> {{ liquidityDescription.description ?? 'بدون توضیحات' }} </mat-card-content>
+            <mat-divider inset></mat-divider>
+        </mat-card>
+    </mat-card-content>
+</mat-card>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LiquidityReportChart, LiquidityReportDescriptions, Organization, Report } from '../models/common.model';
+import { LiquidityReportChart, LiquidityReportDescriptionsNew, Organization, Report } from '../models/common.model';
 
 @Injectable()
 export class AppService {
@@ -28,8 +28,10 @@ export class AppService {
         return this.http.get<Array<LiquidityReportChart>>(`/api/dashboard/naghdinegi/chart?organization=${organization}&createdAt=${createdAt}`);
     }
 
-    public getLiquidityReportDescriptions(organization: string, createdAt: string): Observable<LiquidityReportDescriptions> {
+    public getLiquidityReportDescriptions(organization: string, createdAt: string): Observable<Array<LiquidityReportDescriptionsNew>> {
         // Liquidity = نقدینگی
-        return this.http.get<LiquidityReportDescriptions>(`/api/dashboard/naghdinegi/descriptions?organization=${organization}&createdAt=${createdAt}`);
+        return this.http.get<Array<LiquidityReportDescriptionsNew>>(
+            `/api/dashboard/naghdinegi/descriptions?organization=${organization}&createdAt=${createdAt}`
+        );
     }
 }

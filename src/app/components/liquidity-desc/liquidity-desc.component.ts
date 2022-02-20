@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
-import { ComponentDataGetInfo, LiquidityReportDescriptions } from '../../models/common.model';
+import { ComponentDataGetInfo, LiquidityReportDescriptionsNew } from '../../models/common.model';
 
 @Component({
     selector: 'app-liquidity-desc',
@@ -9,7 +9,7 @@ import { ComponentDataGetInfo, LiquidityReportDescriptions } from '../../models/
 })
 export class LiquidityDescComponent implements OnInit {
     @Input() info!: ComponentDataGetInfo;
-    public liquidity!: LiquidityReportDescriptions;
+    public liquidityDescriptionList: Array<LiquidityReportDescriptionsNew> = [];
 
     constructor(private readonly appService: AppService) {}
 
@@ -19,7 +19,7 @@ export class LiquidityDescComponent implements OnInit {
 
     private getLiquidityDescription(): void {
         this.appService.getLiquidityReportDescriptions(this.info.organization, this.info.createdAt).subscribe((response) => {
-            this.liquidity = response;
+            this.liquidityDescriptionList = response;
         });
     }
 }

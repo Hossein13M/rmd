@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
-import {
-    ComponentDataGetInfo,
-    LiquidityReportChart,
-    LiquidityReportDescriptions,
-    LiquidityReportForGettingData,
-    Organization,
-} from '../../models/common.model';
+import { ComponentDataGetInfo, LiquidityReportChart, LiquidityReportForGettingData, Organization } from '../../models/common.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Utils } from '../../utils';
 
@@ -20,7 +14,6 @@ export class DashboardComponent implements OnInit {
     public availableDatesForReportsPerOrganization: Array<string> = [];
     public liquidityReportChartInfo: Array<LiquidityReportChart> = [];
     public isChartShown: boolean = false;
-    public liquidityReportDescriptionsInfo: Array<LiquidityReportDescriptions> = [];
 
     public form: FormGroup = this.fb.group({
         organization: [null, [Validators.required]],
