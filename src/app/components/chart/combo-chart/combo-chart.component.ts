@@ -25,9 +25,7 @@ export class ComboChartComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(@Inject(PLATFORM_ID) private platformId: any, private zone: NgZone) {}
 
-    ngOnInit(): void {
-        console.log(this.data);
-    }
+    ngOnInit(): void {}
 
     ngAfterViewInit(): void {
         // Chart code goes in here
@@ -36,11 +34,9 @@ export class ComboChartComponent implements OnInit, OnDestroy, AfterViewInit {
             let chart = am4core.create('chartdiv', am4charts.XYChart);
             chart.paddingRight = 10;
             chart.data = this.data;
-            console.log({ chart });
 
             let categoryAxis: any = chart.xAxes.push(new am4charts.CategoryAxis());
             categoryAxis.dataFields.category = 'date';
-            console.log(categoryAxis);
             categoryAxis.title.text = 'تاریخ';
             categoryAxis.title.fontWeight = 'bold';
 
