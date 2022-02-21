@@ -13,6 +13,8 @@ import { ChartModule } from '../../components/chart/chart.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { LiquidityDescModule } from '../../components/liquidity-desc/liquidity-desc.module';
 import { MatDividerModule } from '@angular/material/divider';
+import { ContractsListModule } from '../../components/contracts-list/contracts-list.module';
+import { ProfitModule } from '../../components/profit/profit.module';
 
 @NgModule({
     declarations: [DashboardComponent],
@@ -31,6 +33,8 @@ import { MatDividerModule } from '@angular/material/divider';
         DashboardRoutingModule,
         LiquidityDescModule,
         MatDividerModule,
+        ContractsListModule,
+        ProfitModule,
     ],
 })
 export class DashboardModule {}

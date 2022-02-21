@@ -1,0 +1,23 @@
+p {
+    display: flex;
+    align-content: center;
+    margin: 0;
+}
+
+p:first-of-type {
+    border-left: 2px solid #e4e5ea;
+    margin: 0 0 0 50px;
+    padding: 0 0 0 50px;
+}
+
+.green-color {
+    color: green;
+}
+
+.red-color {
+    color: red;
+}
+
+.yellow-color {
+    color: yellow;
+}

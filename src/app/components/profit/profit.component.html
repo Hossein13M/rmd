@@ -1,0 +1,25 @@
+<mat-card class="bg-color">
+    <mat-card-title class="text-center">{{ profitType === 'net' ? 'حاشیه‌ی سود خالص' : 'حاشیه‌ی سود عملیاتی' }} </mat-card-title>
+    <mat-card-content class="flex flex-wrap">
+        <mat-card class="flex-1">
+            <mat-card-subtitle class="flex items-center justify-center">
+                <!--                <span> {{ profitType === 'net' ? 'حاشیه‌ی سود خالص' : 'حاشیه‌ی سود عملیاتی' }}</span>-->
+                <p>
+                    <mat-icon class="mx-10" [ngClass]="getIconColorBasedOnStatus(profitData.status)">circle</mat-icon>
+                    <span>{{ getProfitValueBasedOnProfitType(profitData) }}</span>
+                </p>
+                <p>
+                    {{ profitData.changePercentage }}
+                    <mat-icon [ngClass]="profitData.changePercentage > 0 ? 'green-color' : 'red-color'">
+                        {{ profitData.changePercentage > 0 ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                    </mat-icon>
+                </p>
+                <!--                <span>-->
+                <!--                    <mat-icon [ngClass]="getIconColorBasedOnStatus(profitData.status)">circle</mat-icon>-->
+                <!--                </span>-->
+            </mat-card-subtitle>
+            <mat-card-content> نمودار </mat-card-content>
+            <mat-divider inset></mat-divider>
+        </mat-card>
+    </mat-card-content>
+</mat-card>
