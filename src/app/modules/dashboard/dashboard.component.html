@@ -17,11 +17,9 @@
         </mat-form-field>
     </form>
 
-    <div class="overflow-y-scroll flex flex-col">
-        <app-combo-chart *ngIf="isChartShown" [data]="this.liquidityReportChartInfo"></app-combo-chart>
+    <div class="flex flex-col text-center px-14">
+        <app-combo-chart *ngIf="isChartShown" [data]="this.liquidityReportChartInfo" class="mb-5"></app-combo-chart>
 
-        <mat-divider></mat-divider>
-
-        <app-liquidity-desc *ngIf="isChartShown" [info]="returnValueForComponents()"></app-liquidity-desc>
+        <app-liquidity-desc *ngIf="isChartShown" [info]="returnValueForComponents()" class="mt-10"></app-liquidity-desc>
     </div>
 </div>
