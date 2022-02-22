@@ -1,4 +1,4 @@
-<mat-card class="bg-color">
+<mat-card class="bg-color" *ngIf="!!profitData">
     <mat-card-title class="text-center">{{ profitType === 'net' ? 'حاشیه‌ی سود خالص' : 'حاشیه‌ی سود عملیاتی' }} </mat-card-title>
     <mat-card-content class="flex flex-wrap">
         <mat-card class="flex-1">
@@ -18,7 +18,9 @@
                 <!--                    <mat-icon [ngClass]="getIconColorBasedOnStatus(profitData.status)">circle</mat-icon>-->
                 <!--                </span>-->
             </mat-card-subtitle>
-            <mat-card-content> نمودار </mat-card-content>
+            <mat-card-content>
+                <app-bar-chart [data]="chartInformation" [chartId]="profitType"></app-bar-chart>
+            </mat-card-content>
             <mat-divider inset></mat-divider>
         </mat-card>
     </mat-card-content>

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
 import { ComponentDataGetInfo } from '../../models/common.model';
+import { ContractListModel } from './contract-list.model';
 
 @Component({
     selector: 'app-contracts-list',
@@ -9,6 +10,7 @@ import { ComponentDataGetInfo } from '../../models/common.model';
 })
 export class ContractsListComponent implements OnInit {
     @Input() info!: ComponentDataGetInfo;
+    public contractsList: Array<ContractListModel> = [];
 
     constructor(private readonly appService: AppService) {}
 
@@ -17,6 +19,8 @@ export class ContractsListComponent implements OnInit {
     }
 
     private getContractsList(): void {
-        this.appService.getContractsList(this.info.organization, this.info.createdAt).subscribe((response) => console.log(response));
+        this.appService.getContractsList(this.info.organization, this.info.createdAt).subscribe((response) => {
+            this.contractsList = response;
+        });
     }
 }
