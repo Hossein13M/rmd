@@ -1,0 +1,56 @@
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../assets/fonts/IRANSansWeb(FaNum)_Bold.eot');
+    src: url('../assets/fonts/IRANSansWeb(FaNum)_Bold.eot?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/IRANSansWeb(FaNum)_Bold.woff2') format('woff2'), url('../assets/fonts/IRANSansWeb(FaNum)_Bold.woff') format('woff'),
+        url('../assets/fonts/IRANSansWeb(FaNum)_Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/fonts/IRANSansWebFaNum.eot');
+    src: url('../assets/fonts/IRANSansWebFaNum.eot?#iefix') format('embedded-opentype'), url('../assets/fonts/IRANSansWebFaNum.woff2') format('woff2'),
+        url('../assets/fonts/IRANSansWebFaNum.woff') format('woff'), url('../assets/fonts/IRANSansWebFaNum.ttf') format('truetype');
+}
+
+.tooltip {
+    font-family: IRANSans, sans-serif !important;
+}
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans');
+
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+text,
+td,
+input {
+    font-family: IRANSans, tahoma, sans-serif !important;
+}
+
+.mat-input-element,
+.mat-calendar,
+.mat-button,
+.mat-raised-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button,
+.mat-fab,
+.mat-mini-fab {
+    font-family: IRANSans, tahoma, sans-serif !important;
+}
+
+[lang='en'] .eng-numbers,
+.eng-numbers {
+    font-family: IRANSans, tahoma, sans-serif !important;
+}
