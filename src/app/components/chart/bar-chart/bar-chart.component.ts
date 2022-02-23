@@ -3,6 +3,7 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import { AfterViewInit, Component, Inject, Input, NgZone, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { isPlatformBrowser } from '@angular/common';
+import { Utils } from '../../../utils';
 
 am4core.useTheme(am4themes_animated);
 
@@ -44,12 +45,14 @@ export class BarChartComponent implements OnInit, OnDestroy, AfterViewInit {
             categoryAxis.renderer.grid.template.location = 0;
             categoryAxis.renderer.minGridDistance = 200;
 
+            chart.yAxes.push(new am4charts.ValueAxis());
+
             // Create series
             let series = chart.series.push(new am4charts.ColumnSeries());
             series.dataFields.valueY = 'value';
             series.dataFields.categoryX = 'name';
             series.columns.template.tooltipText = '{name}\n{valueY}';
-            series.columns.template.fill = am4core.color('#' + (Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6));
+            series.columns.template.fill = am4core.color(Utils.generateRandomColor());
 
             this.chart = chart;
         });

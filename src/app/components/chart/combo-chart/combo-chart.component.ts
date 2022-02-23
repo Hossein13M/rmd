@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, Inject, Input, NgZone, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, Inject, Input, NgZone, OnDestroy, PLATFORM_ID } from '@angular/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { isPlatformBrowser } from '@angular/common';
 import * as am4core from '@amcharts/amcharts4/core';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import { Utils } from '../../../utils';
 
 am4core.useTheme(am4themes_animated);
 
@@ -11,7 +12,7 @@ am4core.useTheme(am4themes_animated);
     templateUrl: './combo-chart.component.html',
     styleUrls: ['./combo-chart.component.scss'],
 })
-export class ComboChartComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ComboChartComponent implements OnDestroy, AfterViewInit {
     public chart!: am4charts.XYChart;
     @Input() data!: any;
 
@@ -24,8 +25,6 @@ export class ComboChartComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     constructor(@Inject(PLATFORM_ID) private platformId: any, private zone: NgZone) {}
-
-    ngOnInit(): void {}
 
     ngAfterViewInit(): void {
         // Chart code goes in here
@@ -52,32 +51,32 @@ export class ComboChartComponent implements OnInit, OnDestroy, AfterViewInit {
             series.dataFields.categoryX = 'date';
             series.name = 'جریان نقد ورودی';
             series.columns.template.tooltipText = 'جریان نقد ورودی';
-            series.columns.template.fill = am4core.color('#92D050');
+            series.columns.template.fill = am4core.color(Utils.generateRandomColor());
 
             let series2 = chart.series.push(new am4charts.ColumnSeries());
             series2.dataFields.valueY = 'G2';
             series2.dataFields.categoryX = 'date';
             series2.name = 'جریان نقد خروجی';
             series2.columns.template.tooltipText = 'جریان نقد خروجی';
-            series2.columns.template.fill = am4core.color('#FF0000');
+            series2.columns.template.fill = am4core.color(Utils.generateRandomColor());
 
             let series3 = chart.series.push(new am4charts.ColumnSeries());
             series3.dataFields.valueY = 'G3';
             series3.dataFields.categoryX = 'date';
             series3.name = 'شکاف';
             series3.columns.template.tooltipText = 'شکاف';
-            series3.columns.template.fill = am4core.color('#BFBFBF');
+            series3.columns.template.fill = am4core.color(Utils.generateRandomColor());
 
             let series4 = chart.series.push(new am4charts.LineSeries());
             series4.name = 'شکاف تجمعی';
-            series4.stroke = am4core.color('#CDA2AB');
+            series4.stroke = am4core.color(Utils.generateRandomColor());
             series4.strokeWidth = 3;
             series4.dataFields.valueY = 'G4';
             series4.dataFields.categoryX = 'date';
 
             let series5 = chart.series.push(new am4charts.LineSeries());
             series5.name = 'شکاف حاشیه‌ای';
-            series5.stroke = am4core.color('#CDA2AB');
+            series5.stroke = am4core.color(Utils.generateRandomColor());
             series5.strokeWidth = 3;
             series5.dataFields.valueY = 'G5';
             series5.dataFields.categoryX = 'date';
