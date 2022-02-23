@@ -22,6 +22,10 @@
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="net"></app-profit>
 
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="operational"></app-profit>
+
+            <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="roa"></app-profit>
+
+            <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="roe"></app-profit>
         </div>
 
         <app-combo-chart *ngIf="isChartShown" [data]="this.liquidityReportChartInfo" class="mb-5"></app-combo-chart>

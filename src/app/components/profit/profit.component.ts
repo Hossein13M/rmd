@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ComponentDataGetInfo } from '../../models/common.model';
 import { AppService } from '../../services/app.service';
-import { NetProfitModel, OperationalProfitModel, ProfitStatus } from './profit.model';
-import { IconColor } from '../../const/constants';
+import { NetProfitModel, OperationalProfitModel, ProfitModels, ProfitStatus, ProfitType, ROAModel, ROEModel } from './profitBaseModel';
+import { IconColor, ProfitDictionary, ProfitURL } from '../../const/constants';
 
 @Component({
     selector: 'app-profit',
@@ -11,30 +11,19 @@ import { IconColor } from '../../const/constants';
 })
 export class ProfitComponent implements OnInit {
     @Input() info!: ComponentDataGetInfo;
-    @Input() profitType!: 'net' | 'operational';
-    public profitData!: NetProfitModel | OperationalProfitModel;
+    @Input() profitType: ProfitType = 'net';
+    public profitData!: ProfitModels;
     public chartInformation: Array<{ name: string; value: string }> = [];
 
     constructor(private readonly appService: AppService) {}
 
     ngOnInit(): void {
-        this.getProfitInfoBasedOnProfitType();
+        this.getProfitReport(ProfitURL[this.profitType]);
     }
 
-    private getProfitInfoBasedOnProfitType(): void {
-        this.profitType === 'net' ? this.getNetProfit() : this.getOperationalProfit();
-    }
-
-    private getNetProfit(): void {
-        this.appService.getNetProfit(this.info.organization, this.info.createdAt).subscribe((response) => {
-            this.profitData = response as NetProfitModel;
-            this.prepareDataForChart();
-        });
-    }
-
-    private getOperationalProfit(): void {
-        this.appService.getOperationalProfit(this.info.organization, this.info.createdAt).subscribe((response) => {
-            this.profitData = response as OperationalProfitModel;
+    private getProfitReport(reportUrl: string): void {
+        this.appService.getProfitReport(this.info.organization, this.info.createdAt, reportUrl).subscribe((response) => {
+            this.profitData = response;
             this.prepareDataForChart();
         });
     }
@@ -43,25 +32,22 @@ export class ProfitComponent implements OnInit {
         return IconColor.find((status) => status.status == profitStatus)!.class;
     }
 
-    public getProfitValueBasedOnProfitType(profit: NetProfitModel | OperationalProfitModel): number {
-        return 'netProfitMargin' in profit ? (profit as NetProfitModel).netProfitMargin : (profit as OperationalProfitModel).operatingProfitMargin;
-    }
-
     private prepareDataForChart(): void {
         if (!this.profitData) return;
-        if ('netProfitMargin' in this.profitData) {
-            this.profitData.netProfitMargin = 5;
-        }
-        this.chartInformation = [
-            {
-                name: this.profitType === 'net' ? 'حاشیه‌ی سود خالص' : 'حاشیه‌ی سود عملیاتی',
-                value:
-                    'netProfitMargin' in this.profitData
-                        ? `${(this.profitData as NetProfitModel).netProfitMargin}`
-                        : `${(this.profitData as OperationalProfitModel).operatingProfitMargin}`,
-            },
-        ];
+        this.chartInformation = [{ name: this.getProfitPersianName(), value: `${this.getProfitValueBasedOnProfitType(this.profitData)}` }];
+    }
 
-        console.log('this is it', this.profitData, this.chartInformation);
+    public getProfitValueBasedOnProfitType(profit: ProfitModels): number {
+        return 'netProfitMargin' in profit
+            ? (profit as NetProfitModel).netProfitMargin
+            : 'operatingProfitMargin' in profit
+            ? (profit as OperationalProfitModel).operatingProfitMargin
+            : 'ROE' in profit
+            ? (profit as ROEModel).ROE
+            : (profit as ROAModel).ROA;
+    }
+
+    public getProfitPersianName(): string {
+        return ProfitDictionary[this.profitType];
     }
 }
