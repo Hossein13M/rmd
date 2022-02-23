@@ -44,15 +44,12 @@ export class BarChartComponent implements OnInit, OnDestroy, AfterViewInit {
             categoryAxis.renderer.grid.template.location = 0;
             categoryAxis.renderer.minGridDistance = 200;
 
-            let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-
             // Create series
             let series = chart.series.push(new am4charts.ColumnSeries());
             series.dataFields.valueY = 'value';
             series.dataFields.categoryX = 'name';
-            series.name = 'جریان نقد ورودی';
-            series.columns.template.tooltipText = 'جریان نقد ورودی';
-            series.columns.template.fill = am4core.color('#92D050');
+            series.columns.template.tooltipText = '{name}\n{valueY}';
+            series.columns.template.fill = am4core.color('#' + (Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6));
 
             this.chart = chart;
         });
