@@ -20,18 +20,13 @@
     <div class="flex flex-col text-center px-14">
         <div class="mb-5 flex justify-around">
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="net"></app-profit>
-
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="operational"></app-profit>
-
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="roa"></app-profit>
-
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="roe"></app-profit>
         </div>
 
         <app-liquidity-chart *ngIf="isChartShown" [info]="returnValueForComponents()" class="mb-5"></app-liquidity-chart>
-
         <app-liquidity-desc *ngIf="isChartShown" [info]="returnValueForComponents()" class="mt-10"></app-liquidity-desc>
-
         <app-contracts-list *ngIf="isChartShown" [info]="returnValueForComponents()" class="mt-10"></app-contracts-list>
     </div>
 </div>
