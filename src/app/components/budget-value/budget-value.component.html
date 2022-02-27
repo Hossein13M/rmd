@@ -1,0 +1,11 @@
+<mat-card class="bg-color" *ngIf="!!budgetValue">
+    <mat-card-title class="text-center">درآمد و هزینه‌ّها </mat-card-title>
+    <mat-card-content class="flex flex-wrap">
+        <mat-card class="flex-1">
+            <mat-card-content>
+                <app-combo-chart-strokeless *ngIf="!!budgetValue" [data]="budgetValue"></app-combo-chart-strokeless>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+        </mat-card>
+    </mat-card-content>
+</mat-card>

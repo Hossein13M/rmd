@@ -16,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ContractsListModule } from '../../components/contracts-list/contracts-list.module';
 import { ProfitModule } from '../../components/profit/profit.module';
 import { LiquidityChartModule } from '../../components/liquidity-chart/liquidity-chart.module';
+import { BudgetValueModule } from '../../components/budget-value/budget-value.module';
 
 @NgModule({
     declarations: [DashboardComponent],
@@ -37,6 +38,7 @@ import { LiquidityChartModule } from '../../components/liquidity-chart/liquidity
         ContractsListModule,
         ProfitModule,
         LiquidityChartModule,
+        BudgetValueModule,
     ],
 })
 export class DashboardModule {}

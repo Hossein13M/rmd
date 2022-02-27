@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LiquidityReportChart, LiquidityReportDescriptionsNew, Organization, Report } from '../models/common.model';
 import { ContractsListModel } from '../components/contracts-list/contracts-list.model';
+import { BudgetValueResponse } from '../components/budget-value/BudgetValue.model';
 
 @Injectable()
 export class AppService {
@@ -42,5 +43,9 @@ export class AppService {
 
     public getProfitReport(organization: string, createdAt: string, url: string): Observable<any> {
         return this.http.get<any>(`/api/dashboard/${url}?organization=${organization}&createdAt=${createdAt}`);
+    }
+
+    public getBudgetAndValueReport(organization: string, createdAt: string): Observable<BudgetValueResponse> {
+        return this.http.get<BudgetValueResponse>(`/api/dashboard/daramad-hazine?organization=${organization}&createdAt=${createdAt}`);
     }
 }
