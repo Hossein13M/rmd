@@ -16,7 +16,7 @@ export class BarChartComponent implements OnInit, OnDestroy, AfterViewInit {
     public chart!: am4charts.XYChart;
     @Input() data!: Array<{ name: string; value: string }>;
     @Input() chartId!: string;
-    @Input() horizontalAxisName: string = 'تاریخ';
+    @Input() horizontalAxisName: string = '';
     @Input() verticalAxisName: string = 'مقدار';
 
     browserOnly(f: () => void) {
