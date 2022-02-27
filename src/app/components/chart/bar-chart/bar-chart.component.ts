@@ -16,6 +16,8 @@ export class BarChartComponent implements OnInit, OnDestroy, AfterViewInit {
     public chart!: am4charts.XYChart;
     @Input() data!: Array<{ name: string; value: string }>;
     @Input() chartId!: string;
+    @Input() horizontalAxisName: string = 'تاریخ';
+    @Input() verticalAxisName: string = 'مقدار';
 
     browserOnly(f: () => void) {
         if (isPlatformBrowser(this.platformId)) {
@@ -27,7 +29,9 @@ export class BarChartComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(@Inject(PLATFORM_ID) private platformId: any, private zone: NgZone) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        console.log(this.data);
+    }
 
     ngAfterViewInit(): void {
         // Chart code goes in here
@@ -39,7 +43,7 @@ export class BarChartComponent implements OnInit, OnDestroy, AfterViewInit {
 
             let categoryAxis: any = chart.xAxes.push(new am4charts.CategoryAxis());
             categoryAxis.dataFields.category = 'name';
-            categoryAxis.title.text = 'تاریخ';
+            categoryAxis.title.text = this.horizontalAxisName;
             categoryAxis.title.fontWeight = 'bold';
 
             categoryAxis.renderer.grid.template.location = 0;

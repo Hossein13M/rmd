@@ -11,6 +11,7 @@ import { ContractsListModel } from './contracts-list.model';
 export class ContractsListComponent implements OnInit {
     @Input() info!: ComponentDataGetInfo;
     public contractsList: Array<ContractsListModel> = [];
+    public barChartData: Array<{ name: string; value: string }> = [];
 
     constructor(private readonly appService: AppService) {}
 
@@ -21,6 +22,15 @@ export class ContractsListComponent implements OnInit {
     private getContractsList(): void {
         this.appService.getContractsList(this.info.organization, this.info.createdAt).subscribe((response) => {
             this.contractsList = response;
+            this.prepareDataForBarChart();
+            console.log(response);
         });
+    }
+
+    private prepareDataForBarChart(): void {
+        this.contractsList.map((contractItem) => {
+            this.barChartData.push({ name: contractItem.titleFA, value: `${contractItem.count + 50}` });
+        });
+        console.log(this.barChartData);
     }
 }

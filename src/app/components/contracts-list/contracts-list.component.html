@@ -1,0 +1,11 @@
+<mat-card class="bg-color" *ngIf="!!barChartData.length">
+    <mat-card-title class="text-center">قراردادهای در جریان </mat-card-title>
+    <mat-card-content class="flex flex-wrap">
+        <mat-card class="flex-1">
+            <mat-card-content>
+                <app-bar-chart *ngIf="!!barChartData.length" [data]="barChartData" chartId="contractList" horizontalAxisName="نام قرارداد"></app-bar-chart>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+        </mat-card>
+    </mat-card-content>
+</mat-card>
