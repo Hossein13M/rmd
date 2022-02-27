@@ -10,6 +10,7 @@ import { ComponentDataGetInfo, LiquidityReportDescriptionsNew } from '../../mode
 export class LiquidityDescComponent implements OnInit {
     @Input() info!: ComponentDataGetInfo;
     public liquidityDescriptionList: Array<LiquidityReportDescriptionsNew> = [];
+    public panelOpenState: boolean = false;
 
     constructor(private readonly appService: AppService) {}
 

@@ -1,10 +1,17 @@
 <mat-card *ngIf="liquidityDescriptionList.length" class="bg-color">
     <mat-card-title class="text-center">توضیحات </mat-card-title>
-    <mat-card-content class="flex flex-wrap">
-        <mat-card *ngFor="let liquidityDescription of liquidityDescriptionList" class="flex-1 mx-10">
-            <mat-card-subtitle>{{ liquidityDescription.title }} </mat-card-subtitle>
-            <mat-card-content> {{ liquidityDescription.description ?? 'بدون توضیحات' }} </mat-card-content>
-            <mat-divider inset></mat-divider>
-        </mat-card>
-    </mat-card-content>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-5">
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ panelOpenState ? 'برای بستن توضیحات، کلیک کنید' : 'برای مشاهده‌ی توضیحات، کلیک کنید' }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-card-content>
+                <mat-card *ngFor="let liquidityDescription of liquidityDescriptionList" class="py-2 mb-5 bg-color">
+                    <mat-card-subtitle>{{ liquidityDescription.title }} </mat-card-subtitle>
+                    <mat-card-content> {{ liquidityDescription.description ?? 'بدون توضیحات' }} </mat-card-content>
+                    <mat-divider inset></mat-divider>
+                </mat-card>
+            </mat-card-content>
+        </mat-expansion-panel>
+    </mat-accordion>
 </mat-card>
