@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
 import { ComponentDataGetInfo } from '../../models/common.model';
-import { ContractListModel } from './contract-list.model';
+import { ContractsListModel } from './contracts-list.model';
 
 @Component({
     selector: 'app-contracts-list',
@@ -10,7 +10,7 @@ import { ContractListModel } from './contract-list.model';
 })
 export class ContractsListComponent implements OnInit {
     @Input() info!: ComponentDataGetInfo;
-    public contractsList: Array<ContractListModel> = [];
+    public contractsList: Array<ContractsListModel> = [];
 
     constructor(private readonly appService: AppService) {}
 

@@ -1,4 +1,4 @@
-export interface ContractListModel {
+export interface ContractsListModel {
     count: number;
     createdAt: string;
     customer: string;
