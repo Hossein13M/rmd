@@ -23,7 +23,6 @@ export class ContractsListComponent implements OnInit {
         this.appService.getContractsList(this.info.organization, this.info.createdAt).subscribe((response) => {
             this.contractsList = response;
             this.prepareDataForBarChart();
-            console.log(response);
         });
     }
 
@@ -31,6 +30,5 @@ export class ContractsListComponent implements OnInit {
         this.contractsList.map((contractItem) => {
             this.barChartData.push({ name: contractItem.titleFA, value: `${contractItem.count + 50}` });
         });
-        console.log(this.barChartData);
     }
 }

@@ -29,16 +29,13 @@ export class BarChartComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(@Inject(PLATFORM_ID) private platformId: any, private zone: NgZone) {}
 
-    ngOnInit(): void {
-        console.log(this.data);
-    }
+    ngOnInit(): void {}
 
     ngAfterViewInit(): void {
         // Chart code goes in here
         this.browserOnly(() => {
             am4core.useTheme(am4themes_animated);
             let chart = am4core.create(this.chartId, am4charts.XYChart);
-            chart.paddingRight = 10;
             chart.data = this.data;
 
             let categoryAxis: any = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -46,8 +43,17 @@ export class BarChartComponent implements OnInit, OnDestroy, AfterViewInit {
             categoryAxis.title.text = this.horizontalAxisName;
             categoryAxis.title.fontWeight = 'bold';
 
-            categoryAxis.renderer.grid.template.location = 0;
-            categoryAxis.renderer.minGridDistance = 200;
+            // categoryAxis.renderer.ticks.template.disabled = false;
+            // categoryAxis.renderer.ticks.template.strokeOpacity = 1;
+            // categoryAxis.renderer.ticks.template.stroke = am4core.color('#000');
+            // categoryAxis.renderer.ticks.template.strokeWidth = 2;
+            // categoryAxis.renderer.ticks.template.length = 10;
+            categoryAxis.renderer.inside = true;
+            categoryAxis.renderer.labels.template.rotation = +90;
+            //
+            // categoryAxis.renderer.labels.template.location = 0.5;
+            //   categoryAxis.renderer.labels.template.verticalCenter = 'middle';
+            //   categoryAxis.renderer.labels.template.horizontalCenter = 'left';
 
             chart.yAxes.push(new am4charts.ValueAxis());
 

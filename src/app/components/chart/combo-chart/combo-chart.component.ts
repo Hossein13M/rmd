@@ -27,20 +27,21 @@ export class ComboChartComponent implements OnDestroy, AfterViewInit {
     constructor(@Inject(PLATFORM_ID) private platformId: any, private zone: NgZone) {}
 
     ngAfterViewInit(): void {
+        console.log(this.data);
         // Chart code goes in here
         this.browserOnly(() => {
             am4core.useTheme(am4themes_animated);
             let chart = am4core.create('chartdiv', am4charts.XYChart);
-            chart.paddingRight = 10;
+            // chart.paddingRight = 20;
             chart.data = this.data;
+
+            chart.scrollbarX = new am4core.Scrollbar();
+            chart.scrollbarX.parent = chart.bottomAxesContainer;
 
             let categoryAxis: any = chart.xAxes.push(new am4charts.CategoryAxis());
             categoryAxis.dataFields.category = 'date';
             categoryAxis.title.text = 'تاریخ';
-            categoryAxis.title.fontWeight = 'bold';
-
-            categoryAxis.renderer.grid.template.location = 0;
-            categoryAxis.renderer.minGridDistance = 200;
+            // categoryAxis.renderer.labels.template.rotation = -90;
 
             let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
             valueAxis.title.text = 'میلیارد تومان';
