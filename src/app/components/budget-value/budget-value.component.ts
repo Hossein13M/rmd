@@ -11,6 +11,7 @@ import { BudgetValueResponse } from './BudgetValue.model';
 export class BudgetValueComponent implements OnInit {
     @Input() info!: ComponentDataGetInfo;
     public budgetValue!: BudgetValueResponse;
+    public hasComponentContainData: boolean = false;
 
     constructor(private readonly appService: AppService) {}
 
@@ -19,6 +20,9 @@ export class BudgetValueComponent implements OnInit {
     }
 
     private getBudgetValueReport(): void {
-        this.appService.getBudgetAndValueReport(this.info.organization, this.info.createdAt).subscribe((response) => (this.budgetValue = response));
+        this.appService.getBudgetAndValueReport(this.info.organization, this.info.createdAt).subscribe((response) => {
+            this.budgetValue = response;
+            this.hasComponentContainData = !!response.data.length;
+        });
     }
 }

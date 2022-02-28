@@ -27,7 +27,6 @@ export class ComboChartStrokelessComponent implements OnDestroy, AfterViewInit {
     constructor(@Inject(PLATFORM_ID) private platformId: any, private zone: NgZone) {}
 
     ngAfterViewInit(): void {
-        console.log('kir', this.data);
         // Chart code goes in here
         this.browserOnly(() => {
             am4core.useTheme(am4themes_animated);
