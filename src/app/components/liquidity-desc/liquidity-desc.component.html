@@ -6,10 +6,10 @@
                 <mat-panel-title> {{ panelOpenState ? 'برای بستن توضیحات، کلیک کنید' : 'برای مشاهده‌ی توضیحات، کلیک کنید' }} </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-card-content>
-                <mat-card *ngFor="let liquidityDescription of liquidityDescriptionList" class="py-2 mb-5 bg-color">
-                    <mat-card-subtitle>{{ liquidityDescription.title }} </mat-card-subtitle>
-                    <mat-card-content> {{ liquidityDescription.description ?? 'بدون توضیحات' }} </mat-card-content>
-                    <mat-divider inset></mat-divider>
+                <mat-divider inset></mat-divider>
+                <mat-card *ngFor="let liquidityDescription of liquidityDescriptionList" class="py-2 mb-5 bg-color text-right">
+                    <mat-card-subtitle class="flex justify-start w-full">{{ liquidityDescription.title }} </mat-card-subtitle>
+                    <mat-card-content class="flex justify-start w-full"> {{ liquidityDescription.description }} </mat-card-content>
                 </mat-card>
             </mat-card-content>
         </mat-expansion-panel>
