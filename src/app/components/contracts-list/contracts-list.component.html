@@ -3,6 +3,7 @@
     <mat-card-content class="flex flex-wrap">
         <mat-card class="flex-1">
             <mat-card-content>
+                <mat-divider inset></mat-divider>
                 <app-bar-chart *ngIf="!!barChartData.length" [data]="barChartData" chartId="contractList" horizontalAxisName="نام قرارداد"></app-bar-chart>
             </mat-card-content>
             <mat-divider inset></mat-divider>
