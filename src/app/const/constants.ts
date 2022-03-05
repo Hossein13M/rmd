@@ -1,5 +1,4 @@
-import { ValidRouteTranslation } from '../models/common.model';
-import { ProfitStatus } from '../components/profit/profitBaseModel';
+import { Status, ValidRouteTranslation } from '../models/common.model';
 
 export const ValidRouteTranslator: Array<ValidRouteTranslation> = [
     { persianTitle: 'خانه', englishTitle: '' },
@@ -7,10 +6,10 @@ export const ValidRouteTranslator: Array<ValidRouteTranslation> = [
     { persianTitle: 'داشبورد', englishTitle: 'dashboard' },
 ];
 
-export const IconColor: Array<{ status: ProfitStatus; class: string }> = [
-    { status: 'Green', class: 'green-color' },
-    { status: 'Yellow', class: 'yellow-color' },
-    { status: 'Red', class: 'red-color' },
+export const IconColor: Array<{ status: Status; class: string }> = [
+    { status: 'green', class: 'green-color' },
+    { status: 'yellow', class: 'yellow-color' },
+    { status: 'red', class: 'red-color' },
 ];
 
 export const ProfitDictionary = {
