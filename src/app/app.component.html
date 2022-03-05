@@ -45,23 +45,30 @@
 
             <div class="calc-div-height py-5 px-5 flex justify-center">
                 <mat-card class="w-full card-background">
-                    <mat-card-header class="text-center justify-center">
+                    <mat-card-header class="text-center flex flex-col items-center justify-center">
                         <mat-card-title class="text-4xl">
                             {{ matCardHeader }}
                         </mat-card-title>
+                        <mat-divider inset></mat-divider>
                     </mat-card-header>
 
-                    <mat-card-content dir="rtl" class="">
+                    <mat-card-content dir="rtl">
                         <router-outlet></router-outlet>
                     </mat-card-content>
 
                     <mat-card-actions class="text-center" dir="rtl">
-                        <hr />
+                        <mat-divider></mat-divider>
                         <h4 class="mt-5">
-                            کلیه‌ی حقوق مادی و معنوی این محصول، متعلق به
-                            <a href="https://www.hooshmandrisk.ir/" target="_blank"> شرکت‌ هوشمند ریسک</a>
+                            کلیه‌ی حقوق مادی و معنوی این محصول، متعلق به شرکت‌
+                            <a href="https://www.hooshmandrisk.ir/" target="_blank"> مدیریت ریسک هوشمند ایرانیان</a>
                             است.
                         </h4>
+                        <span class="text-color">
+                            <span> طراحی و توسعه: </span>
+                            <a href="https://hmousavi.dev/" target="_blank"> حسین موسوی </a>
+                            <span> - </span>
+                            <a href="https://www.linkedin.com/in/danial-dabirian-078a39156/" target="_blank"> دانیال دبیریان</a>
+                        </span>
                     </mat-card-actions>
                 </mat-card>
             </div>
@@ -79,7 +86,7 @@
                     <h1>{{ matCardHeader }}</h1>
                 </section>
 
-                <footer class="text-custom-yellow-500 w-full flex flex-col justify-center py-6 items-center">
+                <footer class="text-custom-yellow-500 flex flex-col justify-center py-6 items-center">
                     <!--                    <button mat-icon-button (click)="changeTheme()" [matTooltip]="isDarkTheme ? 'Dark Theme' : 'Light Theme'">-->
                     <!--                        <mat-icon>{{ isDarkTheme ? 'dark_mode' : 'light_mode' }}</mat-icon>-->
                     <!--                    </button>-->

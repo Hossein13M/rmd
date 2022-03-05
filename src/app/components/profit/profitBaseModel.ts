@@ -1,4 +1,5 @@
-export type ProfitStatus = 'Green' | 'Yellow' | 'Red';
+import { Status } from '../../models/common.model';
+
 export type ProfitType = 'net' | 'operational' | 'roe' | 'roa';
 export type ProfitModels = ROAModel | ROEModel | NetProfitModel | OperationalProfitModel;
 
@@ -6,7 +7,7 @@ interface ProfitBaseModel {
     id: number;
     createdAt: string;
     changePercentage: number;
-    status: ProfitStatus;
+    status: Status;
 }
 
 export interface OperationalProfitModel extends ProfitBaseModel {
