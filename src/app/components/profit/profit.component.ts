@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ComponentDataGetInfo } from '../../models/common.model';
+import { ComponentDataGetInfo, Status } from '../../models/common.model';
 import { AppService } from '../../services/app.service';
-import { NetProfitModel, OperationalProfitModel, ProfitModels, ProfitStatus, ProfitType, ROAModel, ROEModel } from './profitBaseModel';
-import { IconColor, ProfitDictionary, ProfitURL } from '../../const/constants';
+import { NetProfitModel, OperationalProfitModel, ProfitModels, ProfitType, ROAModel, ROEModel } from './profitBaseModel';
+import { ProfitDictionary, ProfitURL } from '../../const/constants';
+import { Utils } from '../../utils';
 
 @Component({
     selector: 'app-profit',
@@ -28,8 +29,8 @@ export class ProfitComponent implements OnInit {
         });
     }
 
-    public getIconColorBasedOnStatus(profitStatus: ProfitStatus): string {
-        return IconColor.find((status) => status.status == profitStatus)!.class;
+    public getIconColorBasedOnStatus(profitStatus: Status): string {
+        return Utils.getIconColorBasedOnStatus(profitStatus);
     }
 
     private prepareDataForChart(): void {
