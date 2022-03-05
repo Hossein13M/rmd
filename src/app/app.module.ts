@@ -19,6 +19,7 @@ import { FileUploadModule } from './modules/file-upload/file-upload.module';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { ChartModule } from './components/chart/chart.module';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
     declarations: [AppComponent],
@@ -40,6 +41,7 @@ import { ChartModule } from './components/chart/chart.module';
         DashboardModule,
         MatNativeDateModule,
         ChartModule,
+        MatDividerModule,
     ],
     providers: [AppService, { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }, { provide: MAT_DATE_LOCALE, useValue: 'fa-IR' }],
     bootstrap: [AppComponent],
