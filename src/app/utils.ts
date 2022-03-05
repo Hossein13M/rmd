@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { formatDate } from '@angular/common';
-import { Status } from './components/profit/profitBaseModel';
 import { IconColor } from './const/constants';
+import { Status } from './models/common.model';
 
 export class Utils {
     constructor() {}
