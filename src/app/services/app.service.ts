@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { LiquidityReportChart, LiquidityReportDescriptionsNew, Organization, Report } from '../models/common.model';
 import { ContractsListModel } from '../components/contracts-list/contracts-list.model';
 import { BudgetValueResponse } from '../components/budget-value/BudgetValue.model';
+import { ConcentrationReport } from '../components/circular-pie-chart/circular-pie-chart.model';
+import { DemandsModel } from '../components/demands/demands.model';
+import { LiquidityCashModel } from '../components/liquidity-cash/liquidity-cash.model';
+import { SufficiencyGaugeChartModel } from '../components/sufficiency-gauge-chart/sufficiency-gauge-chart.model';
 
 @Injectable()
 export class AppService {
@@ -26,12 +30,10 @@ export class AppService {
     }
 
     public getLiquidityReportChart(organization: string, createdAt: string): Observable<Array<LiquidityReportChart>> {
-        // Liquidity = نقدینگی
         return this.http.get<Array<LiquidityReportChart>>(`/api/dashboard/naghdinegi/chart?organization=${organization}&createdAt=${createdAt}`);
     }
 
     public getLiquidityReportDescriptions(organization: string, createdAt: string): Observable<Array<LiquidityReportDescriptionsNew>> {
-        // Liquidity = نقدینگی
         return this.http.get<Array<LiquidityReportDescriptionsNew>>(
             `/api/dashboard/naghdinegi/descriptions?organization=${organization}&createdAt=${createdAt}`
         );
@@ -47,5 +49,21 @@ export class AppService {
 
     public getBudgetAndValueReport(organization: string, createdAt: string): Observable<BudgetValueResponse> {
         return this.http.get<BudgetValueResponse>(`/api/dashboard/daramad-hazine?organization=${organization}&createdAt=${createdAt}`);
+    }
+
+    public getConcentrationPieChartReport(organization: string, createdAt: string, url: string): Observable<Array<ConcentrationReport>> {
+        return this.http.get<Array<ConcentrationReport>>(`/api/dashboard/tamarkoz-${url}?organization=${organization}&createdAt=${createdAt}`);
+    }
+
+    public getDemandsReport(organization: string, createdAt: string): Observable<Array<DemandsModel>> {
+        return this.http.get<Array<DemandsModel>>(`/api/dashboard/motalebat?organization=${organization}&createdAt=${createdAt}`);
+    }
+
+    public getLiquidityCashReport(organization: string, createdAt: string): Observable<LiquidityCashModel> {
+        return this.http.get<LiquidityCashModel>(`/api/dashboard/naghdShavandegi?organization=${organization}&createdAt=${createdAt}`);
+    }
+
+    public getSufficiencyReport(organization: string, createdAt: string): Observable<Array<SufficiencyGaugeChartModel>> {
+        return this.http.get<Array<SufficiencyGaugeChartModel>>(`/api/dashboard/kefayat?organization=${organization}&createdAt=${createdAt}`);
     }
 }
