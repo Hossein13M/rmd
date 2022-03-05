@@ -1,0 +1,18 @@
+<mat-table mat-table [dataSource]="dataSource">
+    <ng-container *ngFor="let dynamicColumn of columns" [matColumnDef]="dynamicColumn.headerIndicator">
+        <mat-header-cell *matHeaderCellDef>
+            <p class="text-capitalize-first">{{ dynamicColumn.headerTitle }}</p>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let tableInfo">
+            <span *ngIf="!checkForStatus(tableInfo[dynamicColumn.headerIndicator])">
+                {{ tableInfo[dynamicColumn.headerIndicator] }}
+            </span>
+            <span *ngIf="checkForStatus(tableInfo[dynamicColumn.headerIndicator])">
+                <mat-icon [ngClass]="getIconColorBasedOnStatus(tableInfo[dynamicColumn.headerIndicator])">circle</mat-icon>
+            </span>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="tableHeadersString"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: tableHeadersString"></mat-row>
+</mat-table>

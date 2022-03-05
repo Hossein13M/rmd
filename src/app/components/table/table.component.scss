@@ -1,0 +1,23 @@
+.mat-header-cell {
+    background-color: #393939;
+    color: white;
+}
+
+.mat-header-cell:first-child {
+    border-top-right-radius: 10px;
+}
+.mat-header-cell:last-child {
+    border-top-left-radius: 10px;
+}
+
+.green-color {
+    color: green;
+}
+
+.red-color {
+    color: red;
+}
+
+.yellow-color {
+    color: yellow;
+}
