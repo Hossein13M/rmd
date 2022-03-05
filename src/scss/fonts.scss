@@ -34,7 +34,14 @@ h6,
 p,
 text,
 td,
-input {
+input,
+table,
+mat-table,
+th,
+td,
+mat-cell,
+mat-header-cell,
+mat-header-row {
     font-family: IRANSans, tahoma, sans-serif !important;
 }
 
