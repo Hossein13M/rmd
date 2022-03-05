@@ -1,0 +1,12 @@
+<mat-card class="bg-color" *ngIf="!!concentrationReportData.length">
+    <mat-card-title class="text-center">{{ getProfitPersianName() }} </mat-card-title>
+    <mat-card-content class="flex flex-wrap">
+        <mat-card class="flex-1">
+            <mat-card-content>
+                <mat-divider inset></mat-divider>
+                <app-pie-chart [chartId]="concentrationReportType" [data]="prepareDataForChart()"></app-pie-chart>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+        </mat-card>
+    </mat-card-content>
+</mat-card>
