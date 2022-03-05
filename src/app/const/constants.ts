@@ -25,3 +25,17 @@ export const ProfitURL = {
     net: 'sood-khales',
     operational: 'sood-amaliati',
 };
+
+export const ConcentrationReportURL = {
+    type: 'noe-seporde',
+    rate: 'nerkh-seporde',
+    bank: 'bank',
+    investment: 'sarmayegozari',
+};
+
+export const ConcentrationReportDictionary = {
+    type: 'تمرکز نوع سپرده',
+    rate: 'تمرکز نرخ سپرده',
+    bank: 'تمرکز در بانک‌ها',
+    investment: 'تمرکز در سرمایه‌گذاری',
+};
