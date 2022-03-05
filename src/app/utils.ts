@@ -1,5 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { formatDate } from '@angular/common';
+import { Status } from './components/profit/profitBaseModel';
+import { IconColor } from './const/constants';
 
 export class Utils {
     constructor() {}
@@ -27,5 +29,9 @@ export class Utils {
 
     static generateRandomColor(): string {
         return '#' + (Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6);
+    }
+
+    static getIconColorBasedOnStatus(profitStatus: Status): string {
+        return IconColor.find((status) => status.status == profitStatus)!.class;
     }
 }
