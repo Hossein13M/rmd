@@ -6,10 +6,11 @@ export const ValidRouteTranslator: Array<ValidRouteTranslation> = [
     { persianTitle: 'داشبورد', englishTitle: 'dashboard' },
 ];
 
-export const IconColor: Array<{ status: Status; class: string }> = [
-    { status: 'green', class: 'green-color' },
-    { status: 'yellow', class: 'yellow-color' },
-    { status: 'red', class: 'red-color' },
+export const IconColor: Array<{ status: Status; class: string; color: string }> = [
+    { status: 'green', class: 'green-color', color: '#6CEB01' },
+    { status: 'yellow', class: 'yellow-color', color: '#FFFF00' },
+    { status: 'red', class: 'red-color', color: '#DA1E38' },
+    { status: 'orange', class: 'orange-color', color: '#FFA500' },
 ];
 
 export const ProfitDictionary = {
