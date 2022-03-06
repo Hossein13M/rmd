@@ -31,7 +31,8 @@ export class Utils {
         return '#' + (Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6);
     }
 
-    static getIconColorBasedOnStatus(profitStatus: Status): string {
-        return IconColor.find((status) => status.status == profitStatus)!.class;
+    static getColorBasedOnStatus(profitStatus: Status, requiredField: 'class' | 'color' = 'class'): string {
+        const foundItem: { status: Status; class: string; color: string } = IconColor.find((status) => status.status == profitStatus)!;
+        return requiredField === 'class' ? foundItem.class : foundItem.color;
     }
 }
