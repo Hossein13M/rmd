@@ -30,7 +30,7 @@ export class ProfitComponent implements OnInit {
     }
 
     public getIconColorBasedOnStatus(profitStatus: Status): string {
-        return Utils.getIconColorBasedOnStatus(profitStatus);
+        return Utils.getColorBasedOnStatus(profitStatus);
     }
 
     private prepareDataForChart(): void {
