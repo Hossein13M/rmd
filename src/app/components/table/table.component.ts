@@ -4,6 +4,7 @@ import { DemandsModel } from '../demands/demands.model';
 import { LiquidityInfo } from '../liquidity-cash/liquidity-cash.model';
 import { Utils } from '../../utils';
 import { Status } from '../../models/common.model';
+import { SufficiencyItem } from '../sufficiency-gauge-chart/sufficiency-gauge-chart.model';
 
 @Component({
     selector: 'app-table',
@@ -11,7 +12,7 @@ import { Status } from '../../models/common.model';
     styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-    @Input() dataSource: Array<DemandsModel | LiquidityInfo> = [];
+    @Input() dataSource: Array<DemandsModel | LiquidityInfo | SufficiencyItem> = [];
     @Input() columns: Array<TableHeaderModel> = [];
     public tableHeadersString: Array<string> = [];
 
@@ -32,6 +33,6 @@ export class TableComponent implements OnInit {
     }
 
     public getIconColorBasedOnStatus(cellStatus: Status): string {
-        return Utils.getIconColorBasedOnStatus(cellStatus);
+        return Utils.getColorBasedOnStatus(cellStatus);
     }
 }
