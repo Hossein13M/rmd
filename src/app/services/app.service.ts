@@ -7,7 +7,7 @@ import { BudgetValueResponse } from '../components/budget-value/BudgetValue.mode
 import { ConcentrationReport } from '../components/circular-pie-chart/circular-pie-chart.model';
 import { DemandsModel } from '../components/demands/demands.model';
 import { LiquidityCashModel } from '../components/liquidity-cash/liquidity-cash.model';
-import { SufficiencyGaugeChartModel } from '../components/sufficiency-gauge-chart/sufficiency-gauge-chart.model';
+import { SufficiencyReport } from '../components/sufficiency-gauge-chart/sufficiency-gauge-chart.model';
 
 @Injectable()
 export class AppService {
@@ -63,7 +63,7 @@ export class AppService {
         return this.http.get<LiquidityCashModel>(`/api/dashboard/naghdShavandegi?organization=${organization}&createdAt=${createdAt}`);
     }
 
-    public getSufficiencyReport(organization: string, createdAt: string): Observable<Array<SufficiencyGaugeChartModel>> {
-        return this.http.get<Array<SufficiencyGaugeChartModel>>(`/api/dashboard/kefayat?organization=${organization}&createdAt=${createdAt}`);
+    public getSufficiencyReport(organization: string, createdAt: string): Observable<SufficiencyReport> {
+        return this.http.get<SufficiencyReport>(`/api/dashboard/kefayat?organization=${organization}&createdAt=${createdAt}`);
     }
 }
