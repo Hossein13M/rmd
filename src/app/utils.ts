@@ -35,4 +35,8 @@ export class Utils {
         const foundItem: { status: Status; class: string; color: string } = IconColor.find((status) => status.status == profitStatus)!;
         return requiredField === 'class' ? foundItem.class : foundItem.color;
     }
+
+    static isNumeric(argumentToBeChecked: any): boolean {
+        return !isNaN(argumentToBeChecked);
+    }
 }
