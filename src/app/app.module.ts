@@ -20,6 +20,9 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { ChartModule } from './components/chart/chart.module';
 import { MatDividerModule } from '@angular/material/divider';
+import { LoadingInterceptor } from './loadingInterceptor';
+import { LoadingService } from './services/loading.service';
+import { LoadingModule } from './components/loading/loading.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -42,8 +45,15 @@ import { MatDividerModule } from '@angular/material/divider';
         MatNativeDateModule,
         ChartModule,
         MatDividerModule,
+        LoadingModule,
     ],
-    providers: [AppService, { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }, { provide: MAT_DATE_LOCALE, useValue: 'fa-IR' }],
+    providers: [
+        AppService,
+        { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+        LoadingService,
+        { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+        { provide: MAT_DATE_LOCALE, useValue: 'fa-IR' },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

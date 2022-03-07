@@ -4,17 +4,22 @@ import { Location } from '@angular/common';
 import { ValidRoutes, ValidRouteTranslation } from './models/common.model';
 import { ValidRouteTranslator } from './const/constants';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { LoadingService } from './services/loading.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterContentInit {
+export class AppComponent implements OnInit, AfterContentInit, OnInit {
     public matCardHeader!: string;
     public navigationList: Array<ValidRouteTranslation> = ValidRouteTranslator;
     public isDarkTheme: boolean = true;
     public screenWidth: number = window.innerWidth;
+    public isLoading!: Subject<boolean>;
+    public loading = new Subject<boolean>();
+
     @ViewChild('sidenav') sidenav!: MatSidenav;
     @ViewChild('infoSidenav') infoSidenav!: MatSidenav;
     @HostListener('window:resize', ['$event'])
@@ -22,7 +27,20 @@ export class AppComponent implements OnInit, AfterContentInit {
         this.screenWidth = window.innerWidth;
     }
 
-    constructor(private readonly location: Location, private readonly router: Router) {}
+    constructor(private readonly location: Location, private readonly router: Router, private readonly loadingService: LoadingService) {}
+
+    public ngOnInit(): void {
+        this.isDarkTheme = localStorage.getItem('theme') === 'dark';
+        this.checkLoading();
+    }
+
+    public ngAfterContentInit(): void {
+        this.setHeaderBasedOnCurrentRoute();
+    }
+
+    private checkLoading(): void {
+        this.loading = this.loadingService.isLoading;
+    }
 
     public clickHandler(navigationItem: ValidRouteTranslation): void {
         this.router.navigate([navigationItem.englishTitle]).finally(() => {
@@ -34,14 +52,6 @@ export class AppComponent implements OnInit, AfterContentInit {
         const path: ValidRoutes = this.location.path().slice(1) as ValidRoutes;
         // the slice is for removing the / from the beginning of the path
         this.matCardHeader = ValidRouteTranslator.find((validRoute) => validRoute.englishTitle === path)!.persianTitle;
-    }
-
-    ngOnInit(): void {
-        this.isDarkTheme = localStorage.getItem('theme') === 'dark';
-    }
-
-    ngAfterContentInit() {
-        this.setHeaderBasedOnCurrentRoute();
     }
 
     public changeTheme(): void {
