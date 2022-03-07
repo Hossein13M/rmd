@@ -1,6 +1,7 @@
 export interface TableHeaderModel {
     headerTitle: string;
     headerIndicator: string;
+    width?: string;
 }
 
 export interface TableKeys {

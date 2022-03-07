@@ -28,7 +28,7 @@ export class TableComponent implements OnInit {
 
     public checkForStatus(status: string): boolean {
         if (status) {
-            return status === 'green' || status === 'red' || status === 'yellow';
+            return status === 'green' || status === 'red' || status === 'yellow' || status === 'orange';
         } else return false;
     }
 

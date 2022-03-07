@@ -1,9 +1,9 @@
-<mat-table mat-table [dataSource]="dataSource">
+<mat-table mat-table [dataSource]="dataSource" dir="rtl" class="inline-table tr-even:bg-grey-light ">
     <ng-container *ngFor="let dynamicColumn of columns" [matColumnDef]="dynamicColumn.headerIndicator">
         <mat-header-cell *matHeaderCellDef>
             <p class="text-capitalize-first">{{ dynamicColumn.headerTitle }}</p>
         </mat-header-cell>
-        <mat-cell *matCellDef="let tableInfo">
+        <mat-cell *matCellDef="let tableInfo" class="transition duration-300 ease-in-out hover:bg-gray-100">
             <span *ngIf="!checkForStatus(tableInfo[dynamicColumn.headerIndicator])">
                 {{ tableInfo[dynamicColumn.headerIndicator] }}
             </span>
