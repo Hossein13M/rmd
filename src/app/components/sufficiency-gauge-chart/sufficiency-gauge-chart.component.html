@@ -1,0 +1,24 @@
+<mat-card class="bg-color" *ngIf="!loading">
+    <mat-card-title class="text-center">گزارش کفایت </mat-card-title>
+    <mat-card-content class="flex flex-wrap">
+        <mat-card class="flex-1">
+            <mat-divider inset></mat-divider>
+            <mat-card-content class="flex flex-col justify-between mt-5">
+                <div class="flex">
+                    <app-gauge-chart
+                        class="flex-1 mb-5"
+                        *ngFor="let gauge of gauges"
+                        [gaugeName]="gauge.titleFA"
+                        [chartId]="gauge.titleEN"
+                        [ranges]="prepareDataForGauge(gauge.titleEN)"
+                        [handValue]="prepareHandValue(gauge.titleEN)"
+                        [rangeMinMax]="prepareRangeMinMax(gauge.titleEN)"
+                    ></app-gauge-chart>
+                </div>
+
+                <app-general-table [columns]="columns" [data]="sufficiencyGaugeReport.table" [tableMinWidth]="400"> </app-general-table>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+        </mat-card>
+    </mat-card-content>
+</mat-card>
