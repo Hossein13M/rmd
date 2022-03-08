@@ -1,0 +1,23 @@
+table,
+mat-paginator {
+    width: 100%;
+}
+
+.mat-header-cell {
+    background-color: #393939;
+    color: white;
+}
+
+td,
+th {
+    width: 25%;
+    text-align: start;
+}
+
+mat-icon {
+    font-size: 18px;
+}
+
+.table-buttons__field {
+    min-width: 200px;
+}

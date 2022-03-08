@@ -1,0 +1,61 @@
+<div class="mat-elevation-z10">
+    <table mat-table [dataSource]="dataSource" matSort [ngStyle]="{ 'min-width': +tableMinWidth + 'px' }">
+        <ng-container *ngFor="let column of columns">
+            <ng-container matColumnDef="{{ column.columnDef }}" [style]="column.minWidth">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header [style]="column.minWidth">{{ column.header }}</th>
+                <td mat-cell *matCellDef="let row" [style]="column.minWidth">
+                    <span *ngIf="!checkForStatus(column.cell(row)); else icon">
+                        <span *ngIf="checkForBeingNumber(column.cell(row)); else text">
+                            <span *ngIf="checkForChangeColumns(column); else dastan" class="flex items-center">
+                                <span [ngClass]="checkForPositiveNumber(+column.cell(row)) ? 'green-color' : 'red-color'">
+                                    {{ checkForPositiveNumber(+column.cell(row)) ? returnValue(column.cell(row)) : KIR(returnValue(column.cell(row))) }}
+                                </span>
+                                <mat-icon [ngClass]="checkForPositiveNumber(+column.cell(row)) ? 'green-color' : 'red-color'">
+                                    {{ checkForPositiveNumber(+column.cell(row)) ? 'expand_less' : 'expand_more' }}
+                                </mat-icon>
+                            </span>
+
+                            <ng-template #dastan>{{ returnValue(column.cell(row)) }}</ng-template>
+                        </span>
+
+                        <ng-template #text>{{ returnValue(column.cell(row)) }}</ng-template>
+                    </span>
+
+                    <ng-template #icon>
+                        <mat-icon [ngClass]="getIconColorBasedOnStatus(column.cell(row))">circle</mat-icon>
+                    </ng-template>
+                </td>
+            </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="buttons.length > 0">
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let row" [ngStyle]="{ 'min-width': 'calc(55px * ' + buttons.length + ')' }">
+                    <div class="btn-group" *ngFor="let button of buttons">
+                        <button class="{{ button.styleClass }}" (click)="this.buttonClick.emit([button.action, button.payload(row)])">
+                            <mat-icon>{{ button.icon }}</mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+        </ng-container>
+
+        <!-- Disclaimer column - with nullable approach -->
+        <ng-container matColumnDef="disclaimer" *ngIf="footer">
+            <td mat-footer-cell *matFooterCellDef colspan="100%">
+                <strong>{{ footer }}</strong>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <ng-container *ngIf="footer">
+            <!-- Make footer nullable -->
+            <tr mat-footer-row *matFooterRowDef="['disclaimer']" class="example-second-footer-row"></tr>
+        </ng-container>
+    </table>
+
+    <mat-paginator *ngIf="hasPaginator" [pageSizeOptions]="pagination" [pageSize]="pageSize" [ngStyle]="{ 'min-width': +tableMinWidth + 'px' }"></mat-paginator>
+</div>
