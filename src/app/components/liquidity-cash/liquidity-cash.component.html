@@ -1,0 +1,12 @@
+<mat-card class="bg-color" *ngIf="liquidityInfo.table.length || liquidityInfo.pieChart.length">
+    <mat-card-title class="text-center">نقدشوندگی </mat-card-title>
+    <mat-card-content class="flex flex-wrap">
+        <mat-card class="flex-1">
+            <mat-divider inset></mat-divider>
+            <mat-card-content class="flex justify-between mt-5">
+                <app-general-table [columns]="columns" [data]="liquidityInfo.table" [tableMinWidth]="400"> </app-general-table>
+                <app-pie-chart class="flex-1" [hasLegend]="false" pieChartHeight="300px" [data]="data" chartId="kir"></app-pie-chart>
+            </mat-card-content>
+        </mat-card>
+    </mat-card-content>
+</mat-card>
