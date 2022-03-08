@@ -30,37 +30,37 @@ export class ComboChartStrokelessComponent implements OnDestroy, AfterViewInit {
         // Chart code goes in here
         this.browserOnly(() => {
             am4core.useTheme(am4themes_animated);
-            let chart = am4core.create('dastan', am4charts.XYChart);
-            chart.data = this.data.data;
+            this.chart = am4core.create('dastan', am4charts.XYChart);
+            this.chart.data = this.data.data;
+            this.chart.rtl = true;
 
-            chart.scrollbarX = new am4core.Scrollbar();
-            chart.scrollbarX.parent = chart.bottomAxesContainer;
-            chart.legend = new am4charts.Legend();
+            this.chart.scrollbarX = new am4core.Scrollbar();
+            this.chart.scrollbarX.parent = this.chart.bottomAxesContainer;
+            this.chart.legend = new am4charts.Legend();
 
-            let categoryAxis: any = chart.xAxes.push(new am4charts.CategoryAxis());
+            let categoryAxis: any = this.chart.xAxes.push(new am4charts.CategoryAxis());
             categoryAxis.dataFields.category = 'titleFA';
-            // categoryAxis.renderer.inside = true;
-            // categoryAxis.renderer.labels.template.rotation = +90;
 
-            let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+            let valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis());
             valueAxis.title.text = 'میلیارد تومان';
 
             // Create series
-            let series = chart.series.push(new am4charts.ColumnSeries());
+            let series = this.chart.series.push(new am4charts.ColumnSeries());
             series.dataFields.valueY = 'budget';
             series.dataFields.categoryX = 'titleFA';
             series.name = this.data.legends.budgetLegend;
-            series.columns.template.tooltipText = '{titleFA}';
+            series.columns.template.tooltipText = '{titleFA}:{valueY}';
             series.columns.template.fill = am4core.color(Utils.generateRandomColor());
 
-            let series2 = chart.series.push(new am4charts.ColumnSeries());
+            let series2 = this.chart.series.push(new am4charts.ColumnSeries());
             series2.dataFields.valueY = 'value';
             series2.dataFields.categoryX = 'titleFA';
             series2.name = this.data.legends.valueLegend;
-            series2.columns.template.tooltipText = '{titleFA}';
+            series2.columns.template.tooltipText = '{titleFA}:{valueY}';
             series2.columns.template.fill = am4core.color(Utils.generateRandomColor());
 
-            this.chart = chart;
+            this.chart.cursor = new am4charts.XYCursor();
+            this.chart.cursor.behavior = 'zoomXY';
         });
     }
 
