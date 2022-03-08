@@ -40,3 +40,9 @@ export const ConcentrationReportDictionary = {
     bank: 'تمرکز در بانک‌ها',
     investment: 'تمرکز در سرمایه‌گذاری',
 };
+
+export const Gauges: Array<{ titleEN: string; titleFA: string }> = [
+    { titleEN: 'CurrentRatio', titleFA: 'نسبت جاری' },
+    { titleEN: 'DebtRatio', titleFA: 'نسبت بدهی' },
+    { titleEN: 'Adequacy', titleFA: 'کفایت سرمایه‌ی تمدن' },
+];

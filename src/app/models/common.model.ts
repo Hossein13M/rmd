@@ -1,5 +1,5 @@
 export type ValidRoutes = 'dashboard' | 'upload-file' | '';
-export type Status = 'green' | 'yellow' | 'red';
+export type Status = 'green' | 'yellow' | 'red' | 'orange';
 
 export interface ValidRouteTranslation {
     persianTitle: string;
