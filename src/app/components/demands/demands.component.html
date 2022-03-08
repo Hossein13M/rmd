@@ -4,7 +4,7 @@
         <mat-card class="flex-1">
             <mat-card-content>
                 <mat-divider inset></mat-divider>
-                <app-table [columns]="tableHeader" [dataSource]="demands"></app-table>
+                <app-general-table [columns]="columns" [data]="demands" [tableMinWidth]="400"> </app-general-table>
             </mat-card-content>
             <mat-divider inset></mat-divider>
         </mat-card>
