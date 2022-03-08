@@ -1,5 +1,5 @@
 <div class="flex flex-col">
-    <form class="flex justify-around w-full mt-5 text-center items-center columns-3" (submit)="prepareDataForLiquidityReports()" [formGroup]="form">
+    <form class="flex justify-around mt-5 text-center items-center columns-3" (submit)="prepareDataForLiquidityReports()" [formGroup]="form">
         <mat-form-field appearance="outline">
             <mat-label>نهاد</mat-label>
             <mat-select formControlName="organization" required>
@@ -11,22 +11,50 @@
 
         <mat-form-field appearance="outline">
             <mat-label>تاریخی را برگزینید</mat-label>
-            <input matInput [matDatepickerFilter]="filterDatesBaseOnReportAvailability" [matDatepicker]="picker" [formControlName]="'createdAt'" />
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <input matInput [matDatepickerFilter]="filterDatesBaseOnReportAvailability" [matDatepicker]="dp3" [formControlName]="'createdAt'" readonly />
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3></mat-datepicker>
         </mat-form-field>
     </form>
 
     <div class="flex flex-col text-center px-14">
-        <div class="mb-5 flex justify-around">
+        <div class="mb-5 flex justify-between">
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="net"></app-profit>
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="operational"></app-profit>
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="roa"></app-profit>
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="roe"></app-profit>
         </div>
 
+        <!--        <app-sufficiency-gauge-chart class="mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"></app-sufficiency-gauge-chart>-->
+
         <app-liquidity-chart *ngIf="isChartShown" [info]="returnValueForComponents()" class="mb-5"></app-liquidity-chart>
-        <app-liquidity-desc *ngIf="isChartShown" [info]="returnValueForComponents()" class="mt-10"></app-liquidity-desc>
+        <app-liquidity-desc class="mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"></app-liquidity-desc>
+        <app-liquidity-cash class="pie-chart-item flex-1" *ngIf="isChartShown" [info]="returnValueForComponents()"></app-liquidity-cash>
+
+        <div class="flex flex-col text-center mt-10">
+            <div class="flex justify-between mb-5">
+                <app-circular-pie-chart class="pie-chart-item flex-1" *ngIf="isChartShown" [info]="returnValueForComponents()" concentrationReportType="type">
+                </app-circular-pie-chart>
+                <app-circular-pie-chart
+                    class="pie-chart-item flex-1"
+                    *ngIf="isChartShown"
+                    [info]="returnValueForComponents()"
+                    concentrationReportType="investment"
+                >
+                </app-circular-pie-chart>
+            </div>
+            <div class="flex justify-between w-full">
+                <app-circular-pie-chart class="pie-chart-item flex-1" *ngIf="isChartShown" [info]="returnValueForComponents()" concentrationReportType="rate">
+                </app-circular-pie-chart
+                ><app-circular-pie-chart class="pie-chart-item flex-1" *ngIf="isChartShown" [info]="returnValueForComponents()" concentrationReportType="bank">
+                </app-circular-pie-chart>
+            </div>
+        </div>
+
+        <app-demands class="mt-5 mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"> </app-demands>
+
+        <!--        <app-performance-curve class="mt-5 mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"></app-performance-curve>-->
+
         <app-contracts-list *ngIf="isChartShown" [info]="returnValueForComponents()" class="mt-10"></app-contracts-list>
         <app-budget-value *ngIf="isChartShown" [info]="returnValueForComponents()" class="mt-10"></app-budget-value>
     </div>

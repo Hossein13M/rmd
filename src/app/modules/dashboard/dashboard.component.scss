@@ -1,4 +1,7 @@
-#chartdiv {
-    width: 100%;
-    height: 400px;
+.pie-chart-item:first-child {
+    margin: 0 0 0 40px;
+}
+
+.pie-chart-item:last-child {
+    margin: 0 40px 0 0;
 }

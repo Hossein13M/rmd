@@ -17,6 +17,11 @@ import { ContractsListModule } from '../../components/contracts-list/contracts-l
 import { ProfitModule } from '../../components/profit/profit.module';
 import { LiquidityChartModule } from '../../components/liquidity-chart/liquidity-chart.module';
 import { BudgetValueModule } from '../../components/budget-value/budget-value.module';
+import { SufficiencyGaugeChartModule } from '../../components/sufficiency-gauge-chart/sufficiency-gauge-chart.module';
+import { CircularPieChartModule } from '../../components/circular-pie-chart/circular-pie-chart.module';
+import { DemandsModule } from '../../components/demands/demands.module';
+import { LiquidityCashModule } from '../../components/liquidity-cash/liquidity-cash.module';
+import { PerformanceCurveModule } from '../../components/performance-curve/performance-curve.module';
 
 @NgModule({
     declarations: [DashboardComponent],
@@ -39,6 +44,11 @@ import { BudgetValueModule } from '../../components/budget-value/budget-value.mo
         ProfitModule,
         LiquidityChartModule,
         BudgetValueModule,
+        SufficiencyGaugeChartModule,
+        CircularPieChartModule,
+        DemandsModule,
+        LiquidityCashModule,
+        PerformanceCurveModule,
     ],
 })
 export class DashboardModule {}
