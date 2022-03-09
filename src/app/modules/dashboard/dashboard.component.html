@@ -25,7 +25,7 @@
             <app-profit *ngIf="isChartShown" [info]="returnValueForComponents()" profitType="roe"></app-profit>
         </div>
 
-        <!--        <app-sufficiency-gauge-chart class="mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"></app-sufficiency-gauge-chart>-->
+        <app-sufficiency-gauge-chart class="mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"></app-sufficiency-gauge-chart>
 
         <app-liquidity-chart *ngIf="isChartShown" [info]="returnValueForComponents()" class="mb-5"></app-liquidity-chart>
         <app-liquidity-desc class="mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"></app-liquidity-desc>
@@ -53,7 +53,7 @@
 
         <app-demands class="mt-5 mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"> </app-demands>
 
-        <!--        <app-performance-curve class="mt-5 mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"></app-performance-curve>-->
+        <app-performance-curve class="mt-5 mb-5" *ngIf="isChartShown" [info]="returnValueForComponents()"></app-performance-curve>
 
         <app-contracts-list *ngIf="isChartShown" [info]="returnValueForComponents()" class="mt-10"></app-contracts-list>
         <app-budget-value *ngIf="isChartShown" [info]="returnValueForComponents()" class="mt-10"></app-budget-value>
