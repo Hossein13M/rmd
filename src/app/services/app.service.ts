@@ -9,6 +9,7 @@ import { DemandsModel } from '../components/demands/demands.model';
 import { LiquidityCashModel } from '../components/liquidity-cash/liquidity-cash.model';
 import { SufficiencyReport } from '../components/sufficiency-gauge-chart/sufficiency-gauge-chart.model';
 import { PerformanceCurveModel } from '../components/performance-curve/performance-curve.model';
+import { HistoryModel } from '../modules/history/history.model';
 
 @Injectable()
 export class AppService {
@@ -70,5 +71,9 @@ export class AppService {
 
     public getPerformanceCurve(organization: string, createdAt: string): Observable<Array<PerformanceCurveModel>> {
         return this.http.get<Array<PerformanceCurveModel>>(`/api/dashboard/monhani-bazdeh?organization=${organization}&createdAt=${createdAt}`);
+    }
+
+    public getFileUploadHistory(): Observable<Array<HistoryModel>> {
+        return this.http.get<Array<HistoryModel>>(`/api/upload-report`);
     }
 }

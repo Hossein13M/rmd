@@ -9,9 +9,9 @@
     </mat-card>
 
     <div class="flex justify-around items-center mt-5 h-full">
-        <mat-card class="w-2/5 h-4/5">
-            <mat-card-title class="w-full text-center">بارگذاری گزارش</mat-card-title>
-            <mat-card-subtitle class="w-full text-center">شما می‌توانید گزارش خود را در این صفحه بارگذاری کنید</mat-card-subtitle>
+        <mat-card class="w-1/5 h-4/5">
+            <mat-card-title class="w-full text-center mb-2">بارگذاری گزارش</mat-card-title>
+            <mat-card-subtitle class="w-full text-center mt-4">شما می‌توانید گزارش خود را در این صفحه بارگذاری کنید</mat-card-subtitle>
 
             <mat-card-content class="flex justify-center items-center">
                 <mat-icon color="primary" class="text-9xl flex justify-center items-center">file_download</mat-icon>
@@ -21,15 +21,27 @@
             </mat-card-actions>
         </mat-card>
 
-        <mat-card class="w-2/5 h-4/5">
-            <mat-card-title class="w-full text-center">نمایش گزارش‌ها</mat-card-title>
-            <mat-card-subtitle class="w-full text-center">در این صفحه شما می‌توانید گزارش‌هایی که پیشتر بارگذاری کرده‌اید را ببینید</mat-card-subtitle>
+        <mat-card class="w-1/5 h-4/5">
+            <mat-card-title class="w-full text-center mb-2">نمایش گزارش‌ها</mat-card-title>
+            <mat-card-subtitle class="w-full text-center mt-4">در این صفحه شما می‌توانید گزارش‌هایی که پیشتر بارگذاری کرده‌اید را ببینید</mat-card-subtitle>
 
             <mat-card-content class="flex justify-center items-center">
                 <mat-icon color="primary" class="text-9xl flex justify-center items-center">dashboard</mat-icon>
             </mat-card-content>
             <mat-card-actions class="flex justify-center mb-4">
                 <button mat-flat-button color="primary" routerLink="/dashboard">ورود به صفحه‌ی نمایش گزارش</button>
+            </mat-card-actions>
+        </mat-card>
+
+        <mat-card class="w-1/5 h-4/5">
+            <mat-card-title class="w-full text-center mb-2">پیشینه‌ی بارگذاری فایل‌ها</mat-card-title>
+            <mat-card-subtitle class="w-full text-center mt-4">شما می‌توانید پیشینه‌ی گزارش‌های بارگذاری شده‌ی خود را در این صفحه ببینید</mat-card-subtitle>
+
+            <mat-card-content class="flex justify-center items-center">
+                <mat-icon color="primary" class="text-9xl flex justify-center items-center">history</mat-icon>
+            </mat-card-content>
+            <mat-card-actions class="flex justify-center mb-4">
+                <button mat-flat-button color="primary" routerLink="/history">ورود به صفحه‌ی پیشینه‌ی گزارش‌ها</button>
             </mat-card-actions>
         </mat-card>
     </div>

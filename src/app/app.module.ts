@@ -26,6 +26,7 @@ import { LoadingModule } from './components/loading/loading.module';
 import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './services/persian-date-picker.adapter';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HistoryModule } from './modules/history/history.module';
 
 @NgModule({
     declarations: [AppComponent, SnackbarComponent],
@@ -50,6 +51,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         MatDividerModule,
         LoadingModule,
         MatSnackBarModule,
+        HistoryModule,
     ],
     providers: [
         AppService,

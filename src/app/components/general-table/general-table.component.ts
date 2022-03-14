@@ -80,7 +80,7 @@ export class GeneralTableComponent {
         return column.columnDef === 'change';
     }
 
-    public KIR(dool: string): number {
-        return +dool * -1;
+    public transform(text: string): number {
+        return +text * -1;
     }
 }

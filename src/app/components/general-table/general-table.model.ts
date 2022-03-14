@@ -1,7 +1,7 @@
 export interface TableBtn {
     styleClass: string;
     icon: string;
-    payload: (arg0: any) => string;
+    payload: (arg0: any) => any;
     action: string;
 }
 
