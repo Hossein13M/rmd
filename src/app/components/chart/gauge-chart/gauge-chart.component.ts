@@ -29,7 +29,6 @@ export class GaugeChartComponent implements OnInit {
 
     ngOnInit(): void {
         this.handValue = +this.handValue.toFixed(2);
-        console.log(this.ranges);
     }
 
     ngAfterViewInit(): void {

@@ -1,4 +1,4 @@
-<mat-card class="bg-color" *ngIf="liquidityInfo.table.length || liquidityInfo.pieChart.length">
+<mat-card class="bg-color" *ngIf="liquidityInfo && (liquidityInfo.table.length || liquidityInfo.pieChart.length)">
     <mat-card-title class="text-center">نقدشوندگی </mat-card-title>
     <mat-card-content class="flex flex-wrap">
         <mat-card class="flex-1">

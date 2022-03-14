@@ -28,6 +28,7 @@
         "@commitlint/config-conventional": "^16.0.0",
         "autoprefixer": "^10.4.2",
         "chart.js": "^3.7.0",
+        "jalali-moment": "^3.3.11",
         "ng2-charts": "^3.0.8",
         "postcss": "^8.4.5",
         "rxjs": "~7.4.0",

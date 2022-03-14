@@ -1,32 +1,34 @@
 <div class="flex flex-col justify-between h-full">
-    <mat-card>
-        <mat-card-title class="text-center">آشنایی با داشبورد مدیریت گزارش (RMD)</mat-card-title>
-        <mat-card-subtitle dir="rtl" class="text-center">
-            <h1>شما در این داشبورد می‌توانید گزارش‌های خود را بارگزاری کرده و پس از آن، تحلیل مناسبی از گزارش‌هایتان را به صورت نمودار و جدول ببینید.</h1>
+    <mat-card class="py-5">
+        <mat-card-title class="text-center my-5">
+            <h1>آشنایی با داشبورد مدیریت گزارش (RMD)</h1>
+        </mat-card-title>
+        <mat-card-subtitle dir="rtl" class="text-center mt-2">
+            <h3>شما در این داشبورد می‌توانید گزارش‌های خود را بارگذاری کرده و پس از آن، تحلیل مناسبی از گزارش‌هایتان را به صورت نمودار و جدول ببینید.</h3>
         </mat-card-subtitle>
     </mat-card>
 
     <div class="flex justify-around items-center mt-5 h-full">
         <mat-card class="w-2/5 h-4/5">
-            <mat-card-title class="w-full text-center">بارگزاری گزارش</mat-card-title>
-            <mat-card-subtitle class="w-full text-center">شما می‌توانید گزارش خود را در این صفحه بارگزاری کنید</mat-card-subtitle>
+            <mat-card-title class="w-full text-center">بارگذاری گزارش</mat-card-title>
+            <mat-card-subtitle class="w-full text-center">شما می‌توانید گزارش خود را در این صفحه بارگذاری کنید</mat-card-subtitle>
 
             <mat-card-content class="flex justify-center items-center">
                 <mat-icon color="primary" class="text-9xl flex justify-center items-center">file_download</mat-icon>
             </mat-card-content>
-            <mat-card-actions class="flex justify-center">
-                <button mat-flat-button color="primary" routerLink="/upload-file">ورود به صفحه‌ی بارگزاری گزارش</button>
+            <mat-card-actions class="flex justify-center mb-4">
+                <button mat-flat-button color="primary" routerLink="/upload-file">ورود به صفحه‌ی بارگذاری گزارش</button>
             </mat-card-actions>
         </mat-card>
 
         <mat-card class="w-2/5 h-4/5">
             <mat-card-title class="w-full text-center">نمایش گزارش‌ها</mat-card-title>
-            <mat-card-subtitle class="w-full text-center">در این صفحه شما می‌توانید گزارش‌هایی که پیشتر بارگزاری کرده‌اید را ببینید</mat-card-subtitle>
+            <mat-card-subtitle class="w-full text-center">در این صفحه شما می‌توانید گزارش‌هایی که پیشتر بارگذاری کرده‌اید را ببینید</mat-card-subtitle>
 
             <mat-card-content class="flex justify-center items-center">
                 <mat-icon color="primary" class="text-9xl flex justify-center items-center">dashboard</mat-icon>
             </mat-card-content>
-            <mat-card-actions class="flex justify-center">
+            <mat-card-actions class="flex justify-center mb-4">
                 <button mat-flat-button color="primary" routerLink="/dashboard">ورود به صفحه‌ی نمایش گزارش</button>
             </mat-card-actions>
         </mat-card>

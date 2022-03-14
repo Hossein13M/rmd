@@ -16,16 +16,19 @@ import { Interceptor } from './interceptor';
 import { AppService } from './services/app.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from './modules/file-upload/file-upload.module';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { ChartModule } from './components/chart/chart.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { LoadingInterceptor } from './loadingInterceptor';
 import { LoadingService } from './services/loading.service';
 import { LoadingModule } from './components/loading/loading.module';
+import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './services/persian-date-picker.adapter';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, SnackbarComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -46,13 +49,24 @@ import { LoadingModule } from './components/loading/loading.module';
         ChartModule,
         MatDividerModule,
         LoadingModule,
+        MatSnackBarModule,
     ],
     providers: [
         AppService,
         { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
         LoadingService,
         { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
-        { provide: MAT_DATE_LOCALE, useValue: 'fa-IR' },
+        // { provide: MAT_DATE_LOCALE, useValue: 'fa-IR' },
+
+        {
+            provide: DateAdapter,
+            useClass: MaterialPersianDateAdapter,
+            deps: [MAT_DATE_LOCALE],
+        },
+        {
+            provide: MAT_DATE_FORMATS,
+            useValue: PERSIAN_DATE_FORMATS,
+        },
     ],
     bootstrap: [AppComponent],
 })

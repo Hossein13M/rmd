@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../../services/app.service';
 import { Organization, Report } from '../../models/common.model';
 import { Utils } from '../../utils';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-file-upload',
@@ -21,7 +22,7 @@ export class FileUploadComponent implements OnInit {
         file: [null, [Validators.required]],
     });
 
-    constructor(private readonly appService: AppService, private readonly fb: FormBuilder) {}
+    constructor(private readonly appService: AppService, private readonly fb: FormBuilder, private _snackBar: MatSnackBar) {}
 
     ngOnInit(): void {
         this.getOrganizationList();
@@ -47,7 +48,26 @@ export class FileUploadComponent implements OnInit {
         const formData: FormData = new FormData();
         Object.keys(reportInfo).map((key) => formData.append(key, reportInfo[key]));
 
-        this.appService.uploadReport(formData).subscribe(() => console.log('success'));
+        this.appService.uploadReport(formData).subscribe(
+            () => {
+                this._snackBar.open('بارگذاری موفق بود ', 'باشه', {
+                    panelClass: 'text-red-500',
+                    direction: 'rtl',
+                    duration: 2500,
+                    verticalPosition: 'bottom',
+                    horizontalPosition: 'left',
+                });
+            },
+            () => {
+                this._snackBar.open('بارگذاری موفق نبود ', 'باشه', {
+                    panelClass: 'text-red-500',
+                    direction: 'rtl',
+                    duration: 2500,
+                    verticalPosition: 'bottom',
+                    horizontalPosition: 'left',
+                });
+            }
+        );
     }
 
     public triggerFileSelect(): void {

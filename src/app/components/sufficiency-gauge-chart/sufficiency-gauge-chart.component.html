@@ -1,4 +1,4 @@
-<mat-card class="bg-color" *ngIf="!loading">
+<mat-card class="bg-color" *ngIf="!loading && sufficiencyGaugeReport && (sufficiencyGaugeReport.gauge.length || sufficiencyGaugeReport.table.length)">
     <mat-card-title class="text-center">گزارش کفایت </mat-card-title>
     <mat-card-content class="flex flex-wrap">
         <mat-card class="flex-1">
