@@ -22,7 +22,7 @@ export class HistoryComponent implements OnInit {
 
     public columns = [
         // { columnDef: 'name', header: 'نام فایل', cell: (element: HistoryModel) => `${element.objectName}`, minWidth: 'min-width: 600px;' },
-        { columnDef: 'type', header: 'نوع فایل', cell: (element: HistoryModel) => `${element.type}`, minWidth: 'min-width: 400px;' },
+        { columnDef: 'type', header: 'نوع', cell: (element: HistoryModel) => `${element.type}`, minWidth: 'min-width: 400px;' },
         {
             columnDef: 'date',
             header: 'تاریخ آپلود',
@@ -30,6 +30,7 @@ export class HistoryComponent implements OnInit {
             minWidth: 'min-width: 400px;',
         },
         { columnDef: 'organization', header: 'نهاد', cell: (element: HistoryModel) => `${element.organization}`, minWidth: 'min-width: 400px;' },
+        { columnDef: 'reportType', header: 'نوع گزارش', cell: (element: HistoryModel) => `${element.reportType}`, minWidth: 'min-width: 400px;' },
     ];
 
     constructor(private appService: AppService) {}
