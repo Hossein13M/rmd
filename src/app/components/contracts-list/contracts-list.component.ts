@@ -28,7 +28,7 @@ export class ContractsListComponent implements OnInit {
 
     private prepareDataForBarChart(): void {
         this.contractsList.map((contractItem) => {
-            this.barChartData.push({ name: contractItem.titleFA, value: `${contractItem.count + 50}` });
+            this.barChartData.push({ name: contractItem.titleFA, value: `${contractItem.count}` });
         });
     }
 }

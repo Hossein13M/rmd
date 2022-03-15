@@ -1,10 +1,10 @@
 <mat-card class="bg-color">
-    <mat-card-title class="text-center">پیشینه‌ی فایل‌های بارگذاری شده </mat-card-title>
     <mat-card-content class="flex flex-wrap">
         <mat-card class="flex-1">
             <mat-card-content>
-<!--                <mat-divider inset></mat-divider>-->
-                <app-general-table *ngIf="!!history.length; else empty" [columns]="columns" [data]="history" [buttons]="buttons" [tableMinWidth]="400">
+                <mat-divider inset></mat-divider>
+                <app-general-table *ngIf="!!history.length; else empty" [columns]="columns" [data]="history"
+                    [buttons]="buttons" [tableMinWidth]="400">
                 </app-general-table>
                 <ng-template #empty>
                     <h1>داده‌ای وجود ندارد</h1>

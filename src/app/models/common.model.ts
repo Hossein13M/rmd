@@ -1,4 +1,4 @@
-export type ValidRoutes = 'dashboard' | 'upload-file' | '';
+export type ValidRoutes = 'dashboard' | 'upload-file' | '' | 'history';
 export type Status = 'green' | 'yellow' | 'red' | 'orange';
 
 export interface ValidRouteTranslation {

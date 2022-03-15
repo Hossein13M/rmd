@@ -4,6 +4,7 @@ export const ValidRouteTranslator: Array<ValidRouteTranslation> = [
     { persianTitle: 'خانه', englishTitle: '' },
     { persianTitle: 'بارگذاری فایل', englishTitle: 'upload-file' },
     { persianTitle: 'داشبورد', englishTitle: 'dashboard' },
+    { persianTitle: 'پیشینه‌ی فایل‌های بارگذاری شده', englishTitle: 'history' },
 ];
 
 export const IconColor: Array<{ status: Status; class: string; color: string }> = [

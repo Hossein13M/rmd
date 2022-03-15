@@ -20,7 +20,7 @@ export class LiquidityDescComponent implements OnInit {
 
     private getLiquidityDescription(): void {
         this.appService.getLiquidityReportDescriptions(this.info.organization, this.info.createdAt).subscribe((response) => {
-            response.map((item) => item.description && this.liquidityDescriptionList.push(item));
+            response.map((item) => (item.description || item.title) && this.liquidityDescriptionList.push(item));
         });
     }
 }

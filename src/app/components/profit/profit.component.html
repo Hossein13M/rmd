@@ -5,10 +5,12 @@
             <mat-card-subtitle class="flex items-center justify-center">
                 <p>
                     <mat-icon class="mx-10" [ngClass]="getIconColorBasedOnStatus(profitData.status)">circle</mat-icon>
-                    <span>{{ getProfitValueBasedOnProfitType(profitData) }}</span>
+                    <span>{{ getProfitValueBasedOnProfitType(profitData) }} % </span>
                 </p>
                 <p>
-                    {{ profitData.changePercentage }}
+                    <span dir="ltr">
+                        {{ profitData.changePercentage }} %
+                    </span>
                     <mat-icon [ngClass]="profitData.changePercentage > 0 ? 'green-color' : 'red-color'">
                         {{ profitData.changePercentage > 0 ? 'arrow_drop_up' : 'arrow_drop_down' }}
                     </mat-icon>
