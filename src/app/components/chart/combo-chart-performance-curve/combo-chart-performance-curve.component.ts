@@ -50,13 +50,14 @@ export class ComboChartPerformanceCurveComponent implements OnDestroy, AfterView
             series.dataFields.valueY = 'value';
             series.dataFields.categoryX = 'yearToMaturity';
             series.name = 'صندوق‌ها';
-            series.columns.template.tooltipText = '{titleFA}';
+            series.columns.template.tooltipText = '{titleFA}: {value}';
             series.columns.template.fill = am4core.color(Utils.generateRandomColor());
 
             let series2 = this.chart.series.push(new am4charts.LineSeries());
             series2.dataFields.valueY = 'rate';
             series2.dataFields.categoryX = 'yearToMaturity';
             series2.name = 'منحنی بازده';
+            series2.tooltipText = '{titleFA}: {rate}';
             series2.stroke = am4core.color('#CDA2AB');
             series2.strokeWidth = 3;
 

@@ -72,8 +72,9 @@ export class GeneralTableComponent {
         return Utils.isNumeric(text);
     }
 
-    public checkForPositiveNumber(number: number): boolean {
-        return number > 0;
+    public checkForPositiveNumber(number: number, checkForZero: boolean = false): boolean {
+        if (checkForZero) return number === 0;
+        else return number > 0;
     }
 
     public checkForChangeColumns(column: TableColumn): boolean {

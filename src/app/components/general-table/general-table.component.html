@@ -7,11 +7,34 @@
                     <span *ngIf="!checkForStatus(column.cell(row)); else icon">
                         <span *ngIf="checkForBeingNumber(column.cell(row)); else text">
                             <span *ngIf="checkForChangeColumns(column); else dastan" class="flex items-center">
-                                <span [ngClass]="checkForPositiveNumber(+column.cell(row)) ? 'green-color' : 'red-color'">
+                                <span
+                                    [ngClass]="
+                                        checkForPositiveNumber(+column.cell(row))
+                                            ? 'green-color'
+                                            : checkForPositiveNumber(+column.cell(row), true)
+                                            ? ''
+                                            : 'red-color'
+                                    "
+                                >
                                     {{ checkForPositiveNumber(+column.cell(row)) ? returnValue(column.cell(row)) : transform(returnValue(column.cell(row))) }}
                                 </span>
-                                <mat-icon [ngClass]="checkForPositiveNumber(+column.cell(row)) ? 'green-color' : 'red-color'">
-                                    {{ checkForPositiveNumber(+column.cell(row)) ? 'expand_less' : 'expand_more' }}
+                                <mat-icon
+                                    class="flex items-center"
+                                    [ngClass]="
+                                        checkForPositiveNumber(+column.cell(row))
+                                            ? 'green-color'
+                                            : checkForPositiveNumber(+column.cell(row), true)
+                                            ? ''
+                                            : 'red-color'
+                                    "
+                                >
+                                    {{
+                                        checkForPositiveNumber(+column.cell(row))
+                                            ? 'expand_less'
+                                            : checkForPositiveNumber(+column.cell(row), true)
+                                            ? 'horizontal_rule'
+                                            : 'expand_more'
+                                    }}
                                 </mat-icon>
                             </span>
 
